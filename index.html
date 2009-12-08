@@ -1,154 +1,88 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Welcome to tweepy&#8217;s documentation! &mdash; tweepy v1.4 documentation</title>
-    <link rel="stylesheet" href="static/default.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '1.4',
-        COLLAPSE_MODINDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="static/jquery.js"></script>
-    <script type="text/javascript" src="static/doctools.js"></script>
-    <link rel="top" title="tweepy v1.4 documentation" href="" />
-    <link rel="next" title="Getting started" href="getting_started.html" /> 
-  </head>
-  <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="getting_started.html" title="Getting started"
-             accesskey="N">next</a> |</li>
-        <li><a href="">tweepy v1.4 documentation</a> &raquo;</li> 
-      </ul>
-    </div>  
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>joshthecoder/tweepy @ GitHub</title>
+	
+	<style type="text/css">
+		body {
+  		margin-top: 1.0em;
+  		background-color: #000000;
+		  font-family: "Helvetica,Arial,FreeSans"; 
+  		color: #ffffff;
+    }
+    #container {
+      margin: 0 auto;
+      width: 700px;
+    }
+		h1 { font-size: 3.8em; color: #ffffff; margin-bottom: 3px; }
+		h1 .small { font-size: 0.4em; }
+		h1 a { text-decoration: none }
+		h2 { font-size: 1.5em; color: #ffffff; }
+    h3 { text-align: center; color: #ffffff; }
+    a { color: #ffffff; }
+    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+    .download { float: right; }
+		pre { background: #000; color: #fff; padding: 15px;}
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .footer { text-align:center; padding-top:30px; font-style: italic; }
+	</style>
+	
+</head>
+
+<body>
+  <a href="http://github.com/joshthecoder/tweepy"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
   
-  <div class="section" id="welcome-to-tweepy-s-documentation">
-<h1>Welcome to tweepy&#8217;s documentation!<a class="headerlink" href="#welcome-to-tweepy-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="getting_started.html">Getting started</a><ul>
-<li class="toctree-l2"><a class="reference external" href="getting_started.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference external" href="getting_started.html#hello-tweepy">Hello Tweepy</a></li>
-<li class="toctree-l2"><a class="reference external" href="getting_started.html#api">API</a></li>
-<li class="toctree-l2"><a class="reference external" href="getting_started.html#models">Models</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="auth_tutorial.html">Authentication Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference external" href="auth_tutorial.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference external" href="auth_tutorial.html#basic-authentication">Basic Authentication</a></li>
-<li class="toctree-l2"><a class="reference external" href="auth_tutorial.html#oauth-authentication">OAuth Authentication</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="code_snippet.html">Code Snippets</a><ul>
-<li class="toctree-l2"><a class="reference external" href="code_snippet.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference external" href="code_snippet.html#basicauth">BasicAuth</a></li>
-<li class="toctree-l2"><a class="reference external" href="code_snippet.html#oauth">OAuth</a></li>
-<li class="toctree-l2"><a class="reference external" href="code_snippet.html#pagination">Pagination</a></li>
-<li class="toctree-l2"><a class="reference external" href="code_snippet.html#followall">FollowAll</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="cursor_tutorial.html">Cursor Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference external" href="cursor_tutorial.html#introduction">Introduction</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference external" href="api.html#tweepy-api-twitter-api-wrapper"><tt class="docutils literal"><span class="pre">tweepy.api</span></tt> &#8212; Twitter API wrapper</a><ul>
-<li class="toctree-l2"><a class="reference external" href="api.html#timeline-methods">Timeline methods</a></li>
-<li class="toctree-l2"><a class="reference external" href="api.html#status-methods">Status methods</a></li>
-<li class="toctree-l2"><a class="reference external" href="api.html#user-methods">User methods</a></li>
-<li class="toctree-l2"><a class="reference external" href="api.html#direct-message-methods">Direct Message Methods</a></li>
-<li class="toctree-l2"><a class="reference external" href="api.html#friendship-methods">Friendship Methods</a></li>
-<li class="toctree-l2"><a class="reference external" href="api.html#account-methods">Account Methods</a></li>
-<li class="toctree-l2"><a class="reference external" href="api.html#favorite-methods">Favorite Methods</a></li>
-<li class="toctree-l2"><a class="reference external" href="api.html#notification-methods">Notification Methods</a></li>
-<li class="toctree-l2"><a class="reference external" href="api.html#block-methods">Block Methods</a></li>
-<li class="toctree-l2"><a class="reference external" href="api.html#spam-reporting-methods">Spam Reporting Methods</a></li>
-<li class="toctree-l2"><a class="reference external" href="api.html#saved-searches-methods">Saved Searches Methods</a></li>
-<li class="toctree-l2"><a class="reference external" href="api.html#help-methods">Help Methods</a></li>
-<li class="toctree-l2"><a class="reference external" href="api.html#list-methods">List Methods</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference external" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference external" href="modindex.html"><em>Module Index</em></a></li>
-<li><a class="reference external" href="search.html"><em>Search Page</em></a></li>
-</ul>
-</div>
+  <div id="container">
 
-
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-            <h3><a href="">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="">Welcome to tweepy&#8217;s documentation!</a><ul>
-</ul>
-</li>
-<li><a class="reference external" href="#indices-and-tables">Indices and tables</a></li>
-</ul>
-
-            <h4>Next topic</h4>
-            <p class="topless"><a href="getting_started.html" title="next chapter">Getting started</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="sources/index.txt">Show Source</a></li>
-            </ul>
-          <h3>Quick search</h3>
-            <form class="search" action="search.html" method="get">
-              <input type="text" name="q" size="18" /> <input type="submit" value="Go" />
-              <input type="hidden" name="check_keywords" value="yes" />
-              <input type="hidden" name="area" value="default" />
-            </form>
-        </div>
-      </div>
-      <div class="clearer"></div>
+    <div class="download">
+      <a href="http://github.com/joshthecoder/tweepy/zipball/master">
+        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
+      <a href="http://github.com/joshthecoder/tweepy/tarball/master">
+        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
     </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="getting_started.html" title="Getting started"
-             accesskey="N">next</a> |</li>
-        <li><a href="">tweepy v1.4 documentation</a> &raquo;</li> 
-      </ul>
+      
+    <h1><a href="http://github.com/joshthecoder/tweepy">tweepy</a> 
+      <span class="small">by <a href="http://github.com/joshthecoder">joshthecoder</a></span></h1>
+
+    <div class="description">
+      A Twitter API library for Python!
     </div>
+
+<h2>Install</h2>
+<p>easy_install tweepy</p>
+<h2>Support</h2>
+<p><a href="docs/index.html">Documentation</a></p>
+<p><a href="http://groups.google.com/group/tweepy">Google Group/Mailing list</a> tweepy@googlegroups.com</p>
+<p>Chat Room: IRC: freenode.net #tweepy  OR  <a href="http://webchat.freenode.net/?channels=tweepy">web client</a></p>
+<h2>License</h2>
+<p> MIT</p>
+<h2>Authors</h2>
+<p>Josh Roesslein (jroesslein@gmail.com)<br/><br/>      </p>
+<h2>Contact</h2>
+<p>Joshua Roesslein (jroesslein@gmail.com)<br/>      </p>
+
+
+    <h2>Download</h2>
+    <p>
+      You can download this project in either
+      <a href="http://github.com/joshthecoder/tweepy/zipball/master">zip</a> or
+      <a href="http://github.com/joshthecoder/tweepy/tarball/master">tar</a> formats.
+    </p>
+    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
+      by running:
+      <pre>$ git clone git://github.com/joshthecoder/tweepy</pre>
+    </p>
+      
     <div class="footer">
-      &copy; Copyright 2009, Joshua Roesslein.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.5.2.
+      get the source code on GitHub : <a href="http://github.com/joshthecoder/tweepy">joshthecoder/tweepy</a>
     </div>
-  </body>
+    
+  </div>
+
+  
+</body>
 </html>
