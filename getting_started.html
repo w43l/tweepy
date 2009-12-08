@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Getting started &mdash; tweepy v1.4 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="tweepy v1.4 documentation" href="index.html" />
+    <link rel="next" title="Authentication Tutorial" href="auth_tutorial.html" />
+    <link rel="prev" title="Welcome to tweepy&#8217;s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="auth_tutorial.html" title="Authentication Tutorial"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to tweepy&#8217;s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">tweepy v1.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="id1">
+<span id="getting-started"></span><h1>Getting started<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>If you are new to Tweepy, this is the place to begin. The goal of this
+tutorial is to get you set-up and rolling with Tweepy. We won&#8217;t go
+into too much details here, just some important basics.</p>
+</div>
+<div class="section" id="hello-tweepy">
+<h2>Hello Tweepy<a class="headerlink" href="#hello-tweepy" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">import</span> <span class="nn">tweepy</span>
+
+<span class="n">public_tweets</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">public_timeline</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">public_tweets</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">tweet</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+</div>
+<p>This example will download the public timeline tweets and print each
+one of their texts to the console. tweepy.api in the above code
+snippet is an unauthenticated instance of the tweepy API class. The
+API class contains all the methods for access the Twitter API. By
+unauthenticated means there is no user associated with this
+instance. So you may only do unauthenticated API calls with this
+instance. For example the following would fail:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tweepy</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">update_status</span><span class="p">(</span><span class="s">&#39;will not work!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <a class="reference external" href="auth_tutorial.html#auth-tutorial"><em>Authentication Tutorial</em></a> goes into more details about authentication.</p>
+</div>
+<div class="section" id="api">
+<h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<p>The API class provides access to the entire twitter RESTful API
+methods. Each method can accept various parameters and return
+responses. For more infomation about these methods please refer to
+<a class="reference external" href="api.html#api-reference"><em>API Reference</em></a>.</p>
+</div>
+<div class="section" id="models">
+<h2>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h2>
+<p>When we invoke an API method most of the time returned back to us will
+be a Tweepy model class instance. This will contain the data returned
+from Twitter which we can then use inside our application. For example
+the following code returns to us an User model:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Get the User object for twitter...</span>
+<span class="n">user</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">get_user</span><span class="p">(</span><span class="s">&#39;twitter&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Models container the data and some helper methods which we can then
+use:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">user</span><span class="o">.</span><span class="n">screen_name</span>
+<span class="k">print</span> <span class="n">user</span><span class="o">.</span><span class="n">followers_count</span>
+<span class="k">for</span> <span class="n">friend</span> <span class="ow">in</span> <span class="n">user</span><span class="o">.</span><span class="n">friends</span><span class="p">():</span>
+   <span class="k">print</span> <span class="n">friend</span><span class="o">.</span><span class="n">screen_name</span>
+</pre></div>
+</div>
+<p>For more information about models please see ModelsReference.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Getting started</a><ul>
+<li><a class="reference external" href="#introduction">Introduction</a></li>
+<li><a class="reference external" href="#hello-tweepy">Hello Tweepy</a></li>
+<li><a class="reference external" href="#api">API</a></li>
+<li><a class="reference external" href="#models">Models</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="index.html" title="previous chapter">Welcome to tweepy&#8217;s documentation!</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="auth_tutorial.html" title="next chapter">Authentication Tutorial</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/getting_started.txt">Show Source</a></li>
+            </ul>
+          <h3>Quick search</h3>
+            <form class="search" action="search.html" method="get">
+              <input type="text" name="q" size="18" /> <input type="submit" value="Go" />
+              <input type="hidden" name="check_keywords" value="yes" />
+              <input type="hidden" name="area" value="default" />
+            </form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="auth_tutorial.html" title="Authentication Tutorial"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to tweepy&#8217;s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">tweepy v1.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Joshua Roesslein.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.5.2.
+    </div>
+  </body>
+</html>

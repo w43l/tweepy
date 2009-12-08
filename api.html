@@ -1,0 +1,783 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>API Reference &mdash; tweepy v1.4 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="tweepy v1.4 documentation" href="index.html" />
+    <link rel="prev" title="Cursor Tutorial" href="cursor_tutorial.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="cursor_tutorial.html" title="Cursor Tutorial"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">tweepy v1.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="id1">
+<span id="api-reference"></span><h1>API Reference<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>This page contains some basic documentation for the Tweepy module.</p>
+</div>
+<div class="section" id="tweepy-api-twitter-api-wrapper">
+<h1><tt class="xref docutils literal"><span class="pre">tweepy.api</span></tt> &#8212; Twitter API wrapper<a class="headerlink" href="#tweepy-api-twitter-api-wrapper" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="API">
+<!--[API]-->class <tt class="descname">API</tt><big>(</big><span class="optional">[</span><em>auth_handler</em><span class="optional">]</span><span class="optional">[</span>, <em>host</em><span class="optional">]</span><span class="optional">[</span>, <em>search_host</em><span class="optional">]</span><span class="optional">[</span>, <em>cache</em><span class="optional">]</span><span class="optional">[</span>, <em>secure</em><span class="optional">]</span><span class="optional">[</span>, <em>api_root</em><span class="optional">]</span><span class="optional">[</span>, <em>search_root</em><span class="optional">]</span><span class="optional">[</span>, <em>retry_count</em><span class="optional">]</span><span class="optional">[</span>, <em>retry_delay</em><span class="optional">]</span><span class="optional">[</span>, <em>retry_errors</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Document this class.</p>
+<div class="section" id="timeline-methods">
+<h2>Timeline methods<a class="headerlink" href="#timeline-methods" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="API.public_timeline">
+<!--[API.public_timeline]--><tt class="descclassname">API.</tt><tt class="descname">public_timeline</tt><big>(</big><big>)</big><a class="headerlink" href="#API.public_timeline" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns the 20 most recent statuses from non-protected users who have
+set a custom user icon. The public timeline is cached for 60 seconds
+so requesting it more often than that is a waste of resources.</p>
+<p>Parameters: None</p>
+<p>Returns: list of class:<cite>Status</cite> objects</p>
+<dl class="method">
+<dt id="API.home_timeline">
+<!--[API.home_timeline]--><tt class="descclassname">API.</tt><tt class="descname">home_timeline</tt><big>(</big><big>)</big><a class="headerlink" href="#API.home_timeline" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns the 20 most recent statuses, including retweets, posted by the
+authenticating user and that user&#8217;s friends. This is the equivalent of
+/timeline/home on the Web.</p>
+<p>Parameters: since_id, max_id, count, page</p>
+<p>Returns: list of class:<cite>Status</cite> objects</p>
+<dl class="method">
+<dt id="API.friends_timeline">
+<!--[API.friends_timeline]--><tt class="descclassname">API.</tt><tt class="descname">friends_timeline</tt><big>(</big><big>)</big><a class="headerlink" href="#API.friends_timeline" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns the 20 most recent statuses posted by the authenticating user
+and that user&#8217;s friends.</p>
+<p>Parameters: since_id, max_id, count, page</p>
+<p>Returns: list of class:<cite>Status</cite> objects</p>
+<dl class="method">
+<dt id="API.user_timeline">
+<!--[API.user_timeline]--><tt class="descclassname">API.</tt><tt class="descname">user_timeline</tt><big>(</big><big>)</big><a class="headerlink" href="#API.user_timeline" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns the 20 most recent statuses posted from the authenticating
+user. It&#8217;s also possible to request another user&#8217;s timeline via the id
+parameter.</p>
+<p>Parameters: (id or user_id or screen_name), since_id, max_id, count, page</p>
+<p>Returns: list of class:<cite>Status</cite> objects</p>
+<dl class="method">
+<dt id="API.mentions">
+<!--[API.mentions]--><tt class="descclassname">API.</tt><tt class="descname">mentions</tt><big>(</big><big>)</big><a class="headerlink" href="#API.mentions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns the 20 most recent mentions (status containing &#64;username) for
+the authenticating user.</p>
+<p>Parameters: since_id, max_id, count, page</p>
+<p>Returns: list of class:<cite>Status</cite> objects</p>
+<dl class="method">
+<dt id="API.retweeted_by_me">
+<!--[API.retweeted_by_me]--><tt class="descclassname">API.</tt><tt class="descname">retweeted_by_me</tt><big>(</big><big>)</big><a class="headerlink" href="#API.retweeted_by_me" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns the 20 most recent retweets posted by the authenticating user.</p>
+<p>Parameters: since_id, max_id, count, page</p>
+<p>Returns: list of class:<cite>Status</cite> objects</p>
+<dl class="method">
+<dt id="API.retweeted_to_me">
+<!--[API.retweeted_to_me]--><tt class="descclassname">API.</tt><tt class="descname">retweeted_to_me</tt><big>(</big><big>)</big><a class="headerlink" href="#API.retweeted_to_me" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns the 20 most recent retweets posted by the authenticating
+user&#8217;s friends.</p>
+<p>Parameters: since_id, max_id, count, page</p>
+<p>Returns: list of class:<cite>Status</cite> objects</p>
+<dl class="method">
+<dt id="API.retweets_of_me">
+<!--[API.retweets_of_me]--><tt class="descclassname">API.</tt><tt class="descname">retweets_of_me</tt><big>(</big><big>)</big><a class="headerlink" href="#API.retweets_of_me" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns the 20 most recent tweets of the authenticated user that have
+been retweeted by others.</p>
+<p>Parameters: since_id, max_id, count, page</p>
+<p>Returns: list of class:<cite>Status</cite> objects</p>
+</div>
+<div class="section" id="status-methods">
+<h2>Status methods<a class="headerlink" href="#status-methods" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="API.get_status">
+<!--[API.get_status]--><tt class="descclassname">API.</tt><tt class="descname">get_status</tt><big>(</big><big>)</big><a class="headerlink" href="#API.get_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns a single status specified by the ID parameter.</p>
+<p>Parameters: id (Required)</p>
+<p>Returns: class:<cite>Status</cite> object</p>
+<dl class="method">
+<dt id="API.update_status">
+<!--[API.update_status]--><tt class="descclassname">API.</tt><tt class="descname">update_status</tt><big>(</big><big>)</big><a class="headerlink" href="#API.update_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Update the authenticated user&#8217;s status. Statuses that are duplicates
+or too long will be silently ignored.</p>
+<p>Parameters: status (Required), in_reply_to_status_id, lat, long</p>
+<p>Returns: class:<cite>Status</cite> object</p>
+<dl class="method">
+<dt id="API.destroy_status">
+<!--[API.destroy_status]--><tt class="descclassname">API.</tt><tt class="descname">destroy_status</tt><big>(</big><big>)</big><a class="headerlink" href="#API.destroy_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Destroy the status specified by the id parameter. The authenticated
+user must be the author of the status to destroy.</p>
+<p>Parameters: id (Required)</p>
+<p>Returns: class:<cite>Status</cite> object</p>
+<dl class="method">
+<dt id="API.retweet">
+<!--[API.retweet]--><tt class="descclassname">API.</tt><tt class="descname">retweet</tt><big>(</big><big>)</big><a class="headerlink" href="#API.retweet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Retweets a tweet. Requires the id of the tweet you are retweeting.</p>
+<p>Parameters: id (Required)</p>
+<p>Returns: class:<cite>Status</cite> object</p>
+<dl class="method">
+<dt id="API.retweets">
+<!--[API.retweets]--><tt class="descclassname">API.</tt><tt class="descname">retweets</tt><big>(</big><big>)</big><a class="headerlink" href="#API.retweets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns up to 100 of the first retweets of the given tweet.</p>
+<p>Parameters: id (Required), count</p>
+<p>Returns: list of class:<cite>Status</cite> objects</p>
+</div>
+<div class="section" id="user-methods">
+<h2>User methods<a class="headerlink" href="#user-methods" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="API.get_user">
+<!--[API.get_user]--><tt class="descclassname">API.</tt><tt class="descname">get_user</tt><big>(</big><big>)</big><a class="headerlink" href="#API.get_user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns information about the specified user.</p>
+<p>Parameters: id OR screen_name OR id (One of these is Required)</p>
+<p>Returns: User object</p>
+<dl class="method">
+<dt id="API.me">
+<!--[API.me]--><tt class="descclassname">API.</tt><tt class="descname">me</tt><big>(</big><big>)</big><a class="headerlink" href="#API.me" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns the authenticated user&#8217;s information.</p>
+<p>Parameters: None</p>
+<p>Returns: User object
+friends</p>
+<p>Returns an user&#8217;s friends ordered in which they were added 100 at a time. If no user is specified by id/screen name, it defaults to the authenticated user.</p>
+<p>Parameters: id OR screen_name OR user_id, cursor</p>
+<p>Returns: list of User objects</p>
+<dl class="method">
+<dt id="API.followers">
+<!--[API.followers]--><tt class="descclassname">API.</tt><tt class="descname">followers</tt><big>(</big><big>)</big><a class="headerlink" href="#API.followers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns an user&#8217;s followers ordered in which they were added 100 at a
+time. If no user is specified by id/screen name, it defaults to the
+authenticated user.</p>
+<p>Parameters: id OR screen_name OR user_id, cursor</p>
+<p>Returns: list of User objects</p>
+<dl class="method">
+<dt id="API.search_users">
+<!--[API.search_users]--><tt class="descclassname">API.</tt><tt class="descname">search_users</tt><big>(</big><big>)</big><a class="headerlink" href="#API.search_users" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Run a search for users similar to Find People button on Twitter.com;
+the same results returned by people search on Twitter.com will be
+returned by using this API (about being listed in the People
+Search). It is only possible to retrieve the first 1000 matches from
+this API.</p>
+<p>Parameters: q (Required. The query.), per_page, page</p>
+<p>Returns: list of User objects</p>
+</div>
+<div class="section" id="direct-message-methods">
+<h2>Direct Message Methods<a class="headerlink" href="#direct-message-methods" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="API.direct_messages">
+<!--[API.direct_messages]--><tt class="descclassname">API.</tt><tt class="descname">direct_messages</tt><big>(</big><big>)</big><a class="headerlink" href="#API.direct_messages" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns direct messages sent to the authenticating user.</p>
+<p>Parameters: since_id, max_id, count, page</p>
+<p>Returns: list of DirectMessage objects</p>
+<dl class="method">
+<dt id="API.sent_direct_messages">
+<!--[API.sent_direct_messages]--><tt class="descclassname">API.</tt><tt class="descname">sent_direct_messages</tt><big>(</big><big>)</big><a class="headerlink" href="#API.sent_direct_messages" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns direct messages sent by the authenticating user.</p>
+<p>Parameters: since_id, max_id, count, page</p>
+<p>Returns: list of DirectMessage objects</p>
+<dl class="method">
+<dt id="API.send_direct_message">
+<!--[API.send_direct_message]--><tt class="descclassname">API.</tt><tt class="descname">send_direct_message</tt><big>(</big><big>)</big><a class="headerlink" href="#API.send_direct_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Sends a new direct message to the specified user from the
+authenticating user.</p>
+<p>Parameters: user (Required), text (Required)</p>
+<p>Returns: DirectMessage object</p>
+<dl class="method">
+<dt id="API.destroy_direct_message">
+<!--[API.destroy_direct_message]--><tt class="descclassname">API.</tt><tt class="descname">destroy_direct_message</tt><big>(</big><big>)</big><a class="headerlink" href="#API.destroy_direct_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Destroy a direct message. Authenticating user must be the recipient of
+the direct message.</p>
+<p>Parameters: id (Required)</p>
+<p>Returns: DirectMessage object</p>
+<dl class="method">
+<dt id="API.create_friendship">
+<!--[API.create_friendship]--><tt class="descclassname">API.</tt><tt class="descname">create_friendship</tt><big>(</big><big>)</big><a class="headerlink" href="#API.create_friendship" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Create a new friendship with the specified user (aka follow).</p>
+<p>Parameters: id OR screen_name OR user_id (One of these is required)</p>
+<p>Returns: User object</p>
+<dl class="method">
+<dt id="API.destroy_friendship">
+<!--[API.destroy_friendship]--><tt class="descclassname">API.</tt><tt class="descname">destroy_friendship</tt><big>(</big><big>)</big><a class="headerlink" href="#API.destroy_friendship" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Destroy a friendship with the specified user (aka unfollow).</p>
+<p>Parameters: id OR screen_name OR user_id (One of these is required)</p>
+<p>Returns: User object</p>
+<dl class="method">
+<dt id="API.exists_friendship">
+<!--[API.exists_friendship]--><tt class="descclassname">API.</tt><tt class="descname">exists_friendship</tt><big>(</big><big>)</big><a class="headerlink" href="#API.exists_friendship" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Checks if a friendship exists between two users. Will return True if
+user_a follows user_b, otherwise False.</p>
+<p>Parameters: user_a (Required), user_b (Required)</p>
+<p>Returns: True/False</p>
+<dl class="method">
+<dt id="API.show_friendship">
+<!--[API.show_friendship]--><tt class="descclassname">API.</tt><tt class="descname">show_friendship</tt><big>(</big><big>)</big><a class="headerlink" href="#API.show_friendship" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns detailed information about the relationship between two users.</p>
+<p>Parameters: source_id OR source_screen_name (One of these is required), target_id OR target_screen_name (One of these is required)</p>
+<p>Returns: Friendship object</p>
+</div>
+<div class="section" id="friendship-methods">
+<h2>Friendship Methods<a class="headerlink" href="#friendship-methods" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="API.friends_ids">
+<!--[API.friends_ids]--><tt class="descclassname">API.</tt><tt class="descname">friends_ids</tt><big>(</big><big>)</big><a class="headerlink" href="#API.friends_ids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns an array containing the IDs of users being followed by the
+specified user.</p>
+<p>Parameters: id OR screen_name OR user_id (One of these is required)</p>
+<p>Returns: list of Integers</p>
+<dl class="method">
+<dt id="API.followers_ids">
+<!--[API.followers_ids]--><tt class="descclassname">API.</tt><tt class="descname">followers_ids</tt><big>(</big><big>)</big><a class="headerlink" href="#API.followers_ids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns an array containing the IDs of users following the specified
+user.</p>
+<p>Parameters: id OR screen_name OR user_id (One of these is required)</p>
+<p>Returns: list of Integers</p>
+</div>
+<div class="section" id="account-methods">
+<h2>Account Methods<a class="headerlink" href="#account-methods" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="API.verify_credentials">
+<!--[API.verify_credentials]--><tt class="descclassname">API.</tt><tt class="descname">verify_credentials</tt><big>(</big><big>)</big><a class="headerlink" href="#API.verify_credentials" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Verify the supplied user credentials are valid.</p>
+<p>Parameters: None</p>
+<p>Returns: User object if credentials are valid, otherwise False</p>
+<dl class="method">
+<dt id="API.rate_limit_status">
+<!--[API.rate_limit_status]--><tt class="descclassname">API.</tt><tt class="descname">rate_limit_status</tt><big>(</big><big>)</big><a class="headerlink" href="#API.rate_limit_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns the remaining number of API requests available to the
+requesting user before the API limit is reached for the current
+hour. Calls to rate_limit_status do not count against the rate
+limit. If authentication credentials are provided, the rate limit
+status for the authenticating user is returned. Otherwise, the rate
+limit status for the requester&#8217;s IP address is returned.</p>
+<p>Parameters: None</p>
+<p>Returns: JSON object</p>
+<dl class="method">
+<dt id="API.set_delivery_device">
+<!--[API.set_delivery_device]--><tt class="descclassname">API.</tt><tt class="descname">set_delivery_device</tt><big>(</big><big>)</big><a class="headerlink" href="#API.set_delivery_device" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Sets which device Twitter delivers updates to for the authenticating
+user. Sending &#8220;none&#8221; as the device parameter will disable SMS updates.</p>
+<p>Parameters: device (Required. Valid values: sms OR none)</p>
+<p>Returns: User object</p>
+<dl class="method">
+<dt id="API.update_profile_colors">
+<!--[API.update_profile_colors]--><tt class="descclassname">API.</tt><tt class="descname">update_profile_colors</tt><big>(</big><big>)</big><a class="headerlink" href="#API.update_profile_colors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Sets one or more hex values that control the color scheme of the
+authenticating user&#8217;s profile page on twitter.com.</p>
+<p>Parameters: profile_background_color, profile_text_color, profile_link_color, profile_sidebar_fill_color, profile_sidebar_border_color</p>
+<p>Returns: User object</p>
+<dl class="method">
+<dt id="API.update_profile_image">
+<!--[API.update_profile_image]--><tt class="descclassname">API.</tt><tt class="descname">update_profile_image</tt><big>(</big><big>)</big><a class="headerlink" href="#API.update_profile_image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Update the authenticating user&#8217;s profile image. Valid formats: GIF,
+JPG, or PNG</p>
+<p>Parameters: filename (Path to image file. Required)</p>
+<p>Returns: User object</p>
+<dl class="method">
+<dt id="API.update_profile_background_image">
+<!--[API.update_profile_background_image]--><tt class="descclassname">API.</tt><tt class="descname">update_profile_background_image</tt><big>(</big><big>)</big><a class="headerlink" href="#API.update_profile_background_image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Update authenticating user&#8217;s background image. Valid formats: GIF,
+JPG, or PNG</p>
+<p>Parameters: filename (Path to image file. Required), tile</p>
+<p>Returns: User object</p>
+<dl class="method">
+<dt id="API.update_profile">
+<!--[API.update_profile]--><tt class="descclassname">API.</tt><tt class="descname">update_profile</tt><big>(</big><big>)</big><a class="headerlink" href="#API.update_profile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Sets values that users are able to set under the &#8220;Account&#8221; tab of
+their settings page.</p>
+<p>Parameters: name, url, location, description</p>
+<p>Returns: User object</p>
+</div>
+<div class="section" id="favorite-methods">
+<h2>Favorite Methods<a class="headerlink" href="#favorite-methods" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="API.favorites">
+<!--[API.favorites]--><tt class="descclassname">API.</tt><tt class="descname">favorites</tt><big>(</big><big>)</big><a class="headerlink" href="#API.favorites" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns the favorite statuses for the authenticating user or user
+specified by the ID parameter.</p>
+<p>Parameters: id, page</p>
+<p>Returns: list of class:<cite>Status</cite> objects</p>
+<dl class="method">
+<dt id="API.create_favorite">
+<!--[API.create_favorite]--><tt class="descclassname">API.</tt><tt class="descname">create_favorite</tt><big>(</big><big>)</big><a class="headerlink" href="#API.create_favorite" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Favorites the status specified in the ID parameter as the
+authenticating user.</p>
+<p>Parameters: id (Required)</p>
+<p>Returns: class:<cite>Status</cite> object</p>
+<dl class="method">
+<dt id="API.destroy_favorite">
+<!--[API.destroy_favorite]--><tt class="descclassname">API.</tt><tt class="descname">destroy_favorite</tt><big>(</big><big>)</big><a class="headerlink" href="#API.destroy_favorite" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Un-favorites the status specified in the ID parameter as the
+authenticating user.</p>
+<p>Parameters: id (Required)</p>
+<p>Returns: class:<cite>Status</cite> object</p>
+</div>
+<div class="section" id="notification-methods">
+<h2>Notification Methods<a class="headerlink" href="#notification-methods" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="API.enable_notifications">
+<!--[API.enable_notifications]--><tt class="descclassname">API.</tt><tt class="descname">enable_notifications</tt><big>(</big><big>)</big><a class="headerlink" href="#API.enable_notifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Enables device notifications for updates from the specified user.</p>
+<p>Parameters: id OR screen_name OR user_id (One of these is required)</p>
+<p>Returns: User object</p>
+<dl class="method">
+<dt id="API.disable_notifications">
+<!--[API.disable_notifications]--><tt class="descclassname">API.</tt><tt class="descname">disable_notifications</tt><big>(</big><big>)</big><a class="headerlink" href="#API.disable_notifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Disables notifications for updates from the specified user to the
+authenticating user.</p>
+<p>Parameters: id OR screen_name OR user_id (One of these is required)</p>
+<p>Returns: User object</p>
+</div>
+<div class="section" id="block-methods">
+<h2>Block Methods<a class="headerlink" href="#block-methods" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="API.create_block">
+<!--[API.create_block]--><tt class="descclassname">API.</tt><tt class="descname">create_block</tt><big>(</big><big>)</big><a class="headerlink" href="#API.create_block" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Blocks the user specified in the ID parameter as the authenticating
+user. Destroys a friendship to the blocked user if it exists.</p>
+<p>Parameters: id OR screen_name OR user_id (One of these is required)</p>
+<p>Returns: User object</p>
+<dl class="method">
+<dt id="API.destroy_block">
+<!--[API.destroy_block]--><tt class="descclassname">API.</tt><tt class="descname">destroy_block</tt><big>(</big><big>)</big><a class="headerlink" href="#API.destroy_block" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Un-blocks the user specified in the ID parameter for the
+authenticating user.</p>
+<p>Parameters: id OR screen_name OR user_id (One of these is required)</p>
+<p>Returns: User object</p>
+<dl class="method">
+<dt id="API.exists_block">
+<!--[API.exists_block]--><tt class="descclassname">API.</tt><tt class="descname">exists_block</tt><big>(</big><big>)</big><a class="headerlink" href="#API.exists_block" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Checks if the authenticated user is blocking the specified user.</p>
+<p>Parameters: id OR screen_name OR user_id (One of these is required)</p>
+<p>Returns: True/False</p>
+<dl class="method">
+<dt id="API.blocks">
+<!--[API.blocks]--><tt class="descclassname">API.</tt><tt class="descname">blocks</tt><big>(</big><big>)</big><a class="headerlink" href="#API.blocks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns an array of user objects that the authenticating user is
+blocking.</p>
+<p>Parameters: page</p>
+<p>Returns: list of User objects</p>
+<dl class="method">
+<dt id="API.blocks_ids">
+<!--[API.blocks_ids]--><tt class="descclassname">API.</tt><tt class="descname">blocks_ids</tt><big>(</big><big>)</big><a class="headerlink" href="#API.blocks_ids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns an array of numeric user ids the authenticating user is
+blocking.</p>
+<p>Parameters: None</p>
+<p>Returns: list of Integers</p>
+</div>
+<div class="section" id="spam-reporting-methods">
+<h2>Spam Reporting Methods<a class="headerlink" href="#spam-reporting-methods" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="API.report_spam">
+<!--[API.report_spam]--><tt class="descclassname">API.</tt><tt class="descname">report_spam</tt><big>(</big><big>)</big><a class="headerlink" href="#API.report_spam" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The user specified in the id is blocked by the authenticated user and
+reported as a spammer.</p>
+<p>Parameters: id OR screen_name OR user_id (One of these is required)</p>
+<p>Returns: User object</p>
+</div>
+<div class="section" id="saved-searches-methods">
+<h2>Saved Searches Methods<a class="headerlink" href="#saved-searches-methods" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="API.saved_searches">
+<!--[API.saved_searches]--><tt class="descclassname">API.</tt><tt class="descname">saved_searches</tt><big>(</big><big>)</big><a class="headerlink" href="#API.saved_searches" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns the authenticated user&#8217;s saved search queries.</p>
+<p>Parameters: None</p>
+<p>Returns: list of SavedSearch objects</p>
+<dl class="method">
+<dt id="API.get_saved_search">
+<!--[API.get_saved_search]--><tt class="descclassname">API.</tt><tt class="descname">get_saved_search</tt><big>(</big><big>)</big><a class="headerlink" href="#API.get_saved_search" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Retrieve the data for a saved search owned by the authenticating user
+specified by the given id.</p>
+<p>Parameters: id (Required)</p>
+<p>Returns: SavedSearch object</p>
+<dl class="method">
+<dt id="API.create_saved_search">
+<!--[API.create_saved_search]--><tt class="descclassname">API.</tt><tt class="descname">create_saved_search</tt><big>(</big><big>)</big><a class="headerlink" href="#API.create_saved_search" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Creates a saved search for the authenticated user.</p>
+<p>Parameters: query (Required)</p>
+<p>Returns: SavedSearch object</p>
+<dl class="method">
+<dt id="API.destroy_saved_search">
+<!--[API.destroy_saved_search]--><tt class="descclassname">API.</tt><tt class="descname">destroy_saved_search</tt><big>(</big><big>)</big><a class="headerlink" href="#API.destroy_saved_search" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Destroys a saved search for the authenticated user. The search
+specified by id must be owned by the authenticating user.</p>
+<p>Parameters: id (Required)</p>
+<p>Returns: SavedSearch object</p>
+</div>
+<div class="section" id="help-methods">
+<h2>Help Methods<a class="headerlink" href="#help-methods" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="API.test">
+<!--[API.test]--><tt class="descclassname">API.</tt><tt class="descname">test</tt><big>(</big><big>)</big><a class="headerlink" href="#API.test" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Invokes the test method in the Twitter API. Return True if successful,
+otherwise False.</p>
+<p>Parameters: None</p>
+<p>Returns: True/False</p>
+<dl class="method">
+<dt id="API.search">
+<!--[API.search]--><tt class="descclassname">API.</tt><tt class="descname">search</tt><big>(</big><big>)</big><a class="headerlink" href="#API.search" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns tweets that match a specified query.</p>
+<p>Parameters: q (Required. The search query string.), lang, locale, rpp, page, since_id, geocode, show_user</p>
+<p>Returns: list of SearchResult objects</p>
+<dl class="method">
+<dt id="API.trends">
+<!--[API.trends]--><tt class="descclassname">API.</tt><tt class="descname">trends</tt><big>(</big><big>)</big><a class="headerlink" href="#API.trends" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns the top ten topics that are currently trending on Twitter. The
+response includes the time of the request, the name of each trend, and
+the url to the Twitter Search results page for that topic.</p>
+<p>Parameters: None</p>
+<p>Returns: JSON object</p>
+<dl class="method">
+<dt id="API.trends_current">
+<!--[API.trends_current]--><tt class="descclassname">API.</tt><tt class="descname">trends_current</tt><big>(</big><big>)</big><a class="headerlink" href="#API.trends_current" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns the current top 10 trending topics on Twitter. The response
+includes the time of the request, the name of each trending topic, and
+query used on Twitter Search results page for that topic.</p>
+<p>Parameters: exclude</p>
+<p>Returns: JSON object</p>
+<dl class="method">
+<dt id="API.trends_daily">
+<!--[API.trends_daily]--><tt class="descclassname">API.</tt><tt class="descname">trends_daily</tt><big>(</big><big>)</big><a class="headerlink" href="#API.trends_daily" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns the top 20 trending topics for each hour in a given day.</p>
+<p>Parameters: date, exclude</p>
+<p>Returns: JSON object</p>
+<dl class="method">
+<dt id="API.trends_weekly">
+<!--[API.trends_weekly]--><tt class="descclassname">API.</tt><tt class="descname">trends_weekly</tt><big>(</big><big>)</big><a class="headerlink" href="#API.trends_weekly" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns the top 30 trending topics for each day in a given week.</p>
+<p>Parameters: date, exclude</p>
+<p>Returns: JSON object</p>
+</div>
+<div class="section" id="list-methods">
+<h2>List Methods<a class="headerlink" href="#list-methods" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="API.create_list">
+<!--[API.create_list]--><tt class="descclassname">API.</tt><tt class="descname">create_list</tt><big>(</big><big>)</big><a class="headerlink" href="#API.create_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Creates a new list for the authenticated user. Accounts are limited to
+20 lists.</p>
+<p>Parameters: name (Required), mode (public/private default: public)</p>
+<p>Returns: class:<cite>List</cite> object</p>
+<dl class="method">
+<dt id="API.destroy_list">
+<!--[API.destroy_list]--><tt class="descclassname">API.</tt><tt class="descname">destroy_list</tt><big>(</big><big>)</big><a class="headerlink" href="#API.destroy_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Deletes the specified list. Must be owned by the authenticated user.</p>
+<p>Parameters: slug (Required. May also be the list ID.)</p>
+<p>Returns: class:<cite>List</cite> object</p>
+<dl class="method">
+<dt id="API.update_list">
+<!--[API.update_list]--><tt class="descclassname">API.</tt><tt class="descname">update_list</tt><big>(</big><big>)</big><a class="headerlink" href="#API.update_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Updates the specified list. Note: this current throws a 500. Twitter
+is looking into the issue.</p>
+<p>Parameters: slug (Required. May also be the list ID.), name, mode (public/private)</p>
+<p>Returns: class:<cite>List</cite> object</p>
+<dl class="method">
+<dt id="API.lists">
+<!--[API.lists]--><tt class="descclassname">API.</tt><tt class="descname">lists</tt><big>(</big><big>)</big><a class="headerlink" href="#API.lists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>List the lists of the specified user. Private lists will be included
+if the authenticated users is the same as the user who&#8217;s lists are
+being returned.</p>
+<p>Parameters: cursor</p>
+<p>Returns: list of class:<cite>List</cite> objects</p>
+<dl class="method">
+<dt id="API.lists_memberships">
+<!--[API.lists_memberships]--><tt class="descclassname">API.</tt><tt class="descname">lists_memberships</tt><big>(</big><big>)</big><a class="headerlink" href="#API.lists_memberships" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>List the lists the specified user has been added to.</p>
+<p>Parameters: cursor</p>
+<p>Returns: list of class:<cite>List</cite> objects</p>
+<dl class="method">
+<dt id="API.lists_subscriptions">
+<!--[API.lists_subscriptions]--><tt class="descclassname">API.</tt><tt class="descname">lists_subscriptions</tt><big>(</big><big>)</big><a class="headerlink" href="#API.lists_subscriptions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>List the lists the specified user follows.</p>
+<p>Parameters: cursor</p>
+<p>Returns: list of class:<cite>List</cite> objects</p>
+<dl class="method">
+<dt id="API.list_timeline">
+<!--[API.list_timeline]--><tt class="descclassname">API.</tt><tt class="descname">list_timeline</tt><big>(</big><big>)</big><a class="headerlink" href="#API.list_timeline" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Show tweet timeline for members of the specified list.</p>
+<p>Parameters: owner (Required.), slug (Required. May also be the list ID.), since_id, max_id, count, page</p>
+<p>Returns: list of class:<cite>Status</cite> objects</p>
+<dl class="method">
+<dt id="API.get_list">
+<!--[API.get_list]--><tt class="descclassname">API.</tt><tt class="descname">get_list</tt><big>(</big><big>)</big><a class="headerlink" href="#API.get_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Show the specified list. Private lists will only be shown if the
+authenticated user owns the specified list.</p>
+<p>Parameters: owner (Required.), slug (Required. May also be the list ID.)</p>
+<p>Returns: class:<cite>List</cite> object</p>
+<dl class="method">
+<dt id="API.add_list_member">
+<!--[API.add_list_member]--><tt class="descclassname">API.</tt><tt class="descname">add_list_member</tt><big>(</big><big>)</big><a class="headerlink" href="#API.add_list_member" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Add a member to a list. The authenticated user must own the list to be
+able to add members to it. Lists are limited to having 500 members.</p>
+<p>Parameters: slug (Required. May also be the list ID.), id (Required. ID of user to add.)</p>
+<p>Returns: class:<cite>List</cite> object</p>
+<dl class="method">
+<dt id="API.remove_list_member">
+<!--[API.remove_list_member]--><tt class="descclassname">API.</tt><tt class="descname">remove_list_member</tt><big>(</big><big>)</big><a class="headerlink" href="#API.remove_list_member" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Removes the specified member from the list. The authenticated user
+must be the list&#8217;s owner to remove members from the list.</p>
+<p>Parameters: slug (Required. May also be the list ID.), id (Required. ID of user to remove.)</p>
+<p>Returns: class:<cite>List</cite> object</p>
+<dl class="method">
+<dt id="API.list_members">
+<!--[API.list_members]--><tt class="descclassname">API.</tt><tt class="descname">list_members</tt><big>(</big><big>)</big><a class="headerlink" href="#API.list_members" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns the members of the specified list.</p>
+<p>Parameters: owner (Required.), slug (Required. May also be list ID.), cursor</p>
+<p>Returns: list of User objects</p>
+<dl class="method">
+<dt id="API.is_list_member">
+<!--[API.is_list_member]--><tt class="descclassname">API.</tt><tt class="descname">is_list_member</tt><big>(</big><big>)</big><a class="headerlink" href="#API.is_list_member" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Check if a user is a member of the specified list.</p>
+<p>Parameters: owner (Required.), slug (Required. May also be list ID.), id (Required. User to check if is a member on the list or not.)</p>
+<p>Returns: User object if user is a member of list, otherwise False.</p>
+<dl class="method">
+<dt id="API.subscribe_list">
+<!--[API.subscribe_list]--><tt class="descclassname">API.</tt><tt class="descname">subscribe_list</tt><big>(</big><big>)</big><a class="headerlink" href="#API.subscribe_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Make the authenticated user follow the specified list.</p>
+<p>Parameters: owner (Required.), slug (Required. May also be list ID.)</p>
+<p>Returns: class:<cite>List</cite> object</p>
+<dl class="method">
+<dt id="API.unsubscribe_list">
+<!--[API.unsubscribe_list]--><tt class="descclassname">API.</tt><tt class="descname">unsubscribe_list</tt><big>(</big><big>)</big><a class="headerlink" href="#API.unsubscribe_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Unsubscribes the authenticated user form the specified list.</p>
+<p>Parameters: owner (Required.), slug (Required. May also be list ID.)</p>
+<p>Returns: class:<cite>List</cite> object</p>
+<dl class="method">
+<dt id="API.list_subscribers">
+<!--[API.list_subscribers]--><tt class="descclassname">API.</tt><tt class="descname">list_subscribers</tt><big>(</big><big>)</big><a class="headerlink" href="#API.list_subscribers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Returns the subscribers of the specified list.</p>
+<p>Parameters: owner (Required.), slug (Required. May also be list ID.), cursor</p>
+<p>Returns: list of User objects</p>
+<dl class="method">
+<dt id="API.is_subscribed_list">
+<!--[API.is_subscribed_list]--><tt class="descclassname">API.</tt><tt class="descname">is_subscribed_list</tt><big>(</big><big>)</big><a class="headerlink" href="#API.is_subscribed_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Check if the specified user is a subscriber of the specified list.</p>
+<p>Parameters: owner (Required.), slug (Required. May also be list ID.), id (Required. User to check if subscribed to the list.)</p>
+<p>Returns: User object if user is subscribed to the list, otherwise False.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">API Reference</a></li>
+<li><a class="reference external" href="#tweepy-api-twitter-api-wrapper"><tt class="docutils literal"><span class="pre">tweepy.api</span></tt> &#8212; Twitter API wrapper</a><ul>
+<li><a class="reference external" href="#timeline-methods">Timeline methods</a></li>
+<li><a class="reference external" href="#status-methods">Status methods</a></li>
+<li><a class="reference external" href="#user-methods">User methods</a></li>
+<li><a class="reference external" href="#direct-message-methods">Direct Message Methods</a></li>
+<li><a class="reference external" href="#friendship-methods">Friendship Methods</a></li>
+<li><a class="reference external" href="#account-methods">Account Methods</a></li>
+<li><a class="reference external" href="#favorite-methods">Favorite Methods</a></li>
+<li><a class="reference external" href="#notification-methods">Notification Methods</a></li>
+<li><a class="reference external" href="#block-methods">Block Methods</a></li>
+<li><a class="reference external" href="#spam-reporting-methods">Spam Reporting Methods</a></li>
+<li><a class="reference external" href="#saved-searches-methods">Saved Searches Methods</a></li>
+<li><a class="reference external" href="#help-methods">Help Methods</a></li>
+<li><a class="reference external" href="#list-methods">List Methods</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="cursor_tutorial.html" title="previous chapter">Cursor Tutorial</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/api.txt">Show Source</a></li>
+            </ul>
+          <h3>Quick search</h3>
+            <form class="search" action="search.html" method="get">
+              <input type="text" name="q" size="18" /> <input type="submit" value="Go" />
+              <input type="hidden" name="check_keywords" value="yes" />
+              <input type="hidden" name="area" value="default" />
+            </form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="cursor_tutorial.html" title="Cursor Tutorial"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">tweepy v1.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Joshua Roesslein.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.5.2.
+    </div>
+  </body>
+</html>

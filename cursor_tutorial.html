@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Cursor Tutorial &mdash; tweepy v1.4 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="tweepy v1.4 documentation" href="index.html" />
+    <link rel="next" title="API Reference" href="api.html" />
+    <link rel="prev" title="Code Snippets" href="code_snippet.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="api.html" title="API Reference"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="code_snippet.html" title="Code Snippets"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">tweepy v1.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="id1">
+<span id="cursor-tutorial"></span><h1>Cursor Tutorial<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial describes details on pagination with Cursor objects.</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>We use pagination a lot in Twitter API development. Iterating through
+timelines, user lists, direct messages, etc. In order to perform
+pagination we must supply a page/cursor parameter with each of our
+requests. The problem here is this requires a lot of boiler plate code
+just to mange the pagination loop. To help mage pagination easier and
+require less code Tweepy has the Cursor object.</p>
+<div class="section" id="old-way-vs-cursor-way">
+<h3>Old way vs Cursor way<a class="headerlink" href="#old-way-vs-cursor-way" title="Permalink to this headline">¶</a></h3>
+<p>First let&#8217;s demonstrate iterating the statues in the authenticated
+user&#8217;s timeline. Here is how we would do it the &#8220;old way&#8221; before
+Cursor object was introduced:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">page</span> <span class="o">=</span> <span class="mf">1</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">statuses</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="n">page</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">statuses</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">status</span> <span class="ow">in</span> <span class="n">statuses</span><span class="p">:</span>
+            <span class="c"># process status here</span>
+            <span class="n">process_status</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c"># All done</span>
+        <span class="k">break</span>
+    <span class="n">page</span> <span class="o">+=</span> <span class="mf">1</span>  <span class="c"># next page</span>
+</pre></div>
+</div>
+<p>As you can see we must manage the &#8220;page&#8221; parameter manually in our
+pagination loop. Now here is the version of the code using Cursor
+object:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">status</span> <span class="ow">in</span> <span class="n">Cursor</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="c"># process status here</span>
+    <span class="n">process_status</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now that looks much better! Cursor handles all the pagination work for
+us behind the scene so our code can now focus entirely on processing
+the results.</p>
+</div>
+<div class="section" id="passing-parameters-into-the-api-method">
+<h3>Passing parameters into the API method<a class="headerlink" href="#passing-parameters-into-the-api-method" title="Permalink to this headline">¶</a></h3>
+<p>What if you need to pass in parameters to the API method?</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">api</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s">&quot;twitter&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Since we pass Cursor the callable, we can not pass the parameters
+directly into the method. Instead we pass the parameters into the
+Cursor constructor method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Cursor</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s">&quot;twitter&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now Cursor will pass the parameter into the method for us when ever it
+makes a request.</p>
+</div>
+<div class="section" id="items-or-pages">
+<h3>Items or Pages<a class="headerlink" href="#items-or-pages" title="Permalink to this headline">¶</a></h3>
+<p>So far we have just demonstrated pagination iterating per an
+item. What if instead you want to process per a page of results? You
+would use the pages() method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">Cursor</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">)</span><span class="o">.</span><span class="n">pages</span><span class="p">():</span>
+    <span class="c"># page is a list of statuses</span>
+    <span class="n">process_page</span><span class="p">(</span><span class="n">page</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="limits">
+<h3>Limits<a class="headerlink" href="#limits" title="Permalink to this headline">¶</a></h3>
+<p>What if you only want n items or pages returned? You pass into the items() or pages() methods the limit you want to impose.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Only iterate through the first 200 statuses</span>
+<span class="k">for</span> <span class="n">status</span> <span class="ow">in</span> <span class="n">Cursor</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mf">200</span><span class="p">):</span>
+    <span class="n">process_status</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+
+<span class="c"># Only iterate through the first 3 pages</span>
+<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">Cursor</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">)</span><span class="o">.</span><span class="n">pages</span><span class="p">(</span><span class="mf">3</span><span class="p">):</span>
+    <span class="n">process_page</span><span class="p">(</span><span class="n">page</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Cursor Tutorial</a><ul>
+<li><a class="reference external" href="#introduction">Introduction</a><ul>
+<li><a class="reference external" href="#old-way-vs-cursor-way">Old way vs Cursor way</a></li>
+<li><a class="reference external" href="#passing-parameters-into-the-api-method">Passing parameters into the API method</a></li>
+<li><a class="reference external" href="#items-or-pages">Items or Pages</a></li>
+<li><a class="reference external" href="#limits">Limits</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="code_snippet.html" title="previous chapter">Code Snippets</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="api.html" title="next chapter">API Reference</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/cursor_tutorial.txt">Show Source</a></li>
+            </ul>
+          <h3>Quick search</h3>
+            <form class="search" action="search.html" method="get">
+              <input type="text" name="q" size="18" /> <input type="submit" value="Go" />
+              <input type="hidden" name="check_keywords" value="yes" />
+              <input type="hidden" name="area" value="default" />
+            </form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="api.html" title="API Reference"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="code_snippet.html" title="Code Snippets"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">tweepy v1.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Joshua Roesslein.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.5.2.
+    </div>
+  </body>
+</html>
