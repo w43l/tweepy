@@ -66,7 +66,6 @@ API.search method api.html
 API.get_list method api.html
 API.create_saved_search method api.html
 API.report_spam method api.html
-API.add_list_member method api.html
 API.trends_current method api.html
 API class api.html
 API.search_users method api.html
