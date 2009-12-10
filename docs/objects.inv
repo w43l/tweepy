@@ -3,6 +3,7 @@
 # Version: 1.4
 API.get_status method api.html
 API.followers method api.html
+API.trends_location method api.html
 API.blocks method api.html
 API.list_timeline method api.html
 API.favorites method api.html
@@ -42,6 +43,7 @@ API.trends_daily method api.html
 API.destroy_saved_search method api.html
 API.friends_timeline method api.html
 API.send_direct_message method api.html
+API.trends_available method api.html
 API.update_profile_colors method api.html
 API.update_profile_image method api.html
 API.lists_memberships method api.html
@@ -66,6 +68,7 @@ API.search method api.html
 API.get_list method api.html
 API.create_saved_search method api.html
 API.report_spam method api.html
+API.add_list_member method api.html
 API.trends_current method api.html
 API class api.html
 API.search_users method api.html

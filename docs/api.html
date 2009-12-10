@@ -39,17 +39,38 @@
           <div class="body">
             
   
-  <div class="section" id="id1">
-<span id="api-reference"></span><h1>API Reference<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+  <span class="target" id="api-reference"></span><div class="section" id="id1">
+<h1>API Reference<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>This page contains some basic documentation for the Tweepy module.</p>
 </div>
 <div class="section" id="tweepy-api-twitter-api-wrapper">
 <h1><tt class="xref docutils literal"><span class="pre">tweepy.api</span></tt> &#8212; Twitter API wrapper<a class="headerlink" href="#tweepy-api-twitter-api-wrapper" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="API">
-<!--[API]-->class <tt class="descname">API</tt><big>(</big><span class="optional">[</span><em>auth_handler</em><span class="optional">]</span><span class="optional">[</span>, <em>host</em><span class="optional">]</span><span class="optional">[</span>, <em>search_host</em><span class="optional">]</span><span class="optional">[</span>, <em>cache</em><span class="optional">]</span><span class="optional">[</span>, <em>secure</em><span class="optional">]</span><span class="optional">[</span>, <em>api_root</em><span class="optional">]</span><span class="optional">[</span>, <em>search_root</em><span class="optional">]</span><span class="optional">[</span>, <em>retry_count</em><span class="optional">]</span><span class="optional">[</span>, <em>retry_delay</em><span class="optional">]</span><span class="optional">[</span>, <em>retry_errors</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API" title="Permalink to this definition">¶</a></dt>
-<dd>This class provides a wrapper for the API as provided by
-Twitter. The functions provided in this class are listed below.</dd></dl>
+<!--[API]-->class <tt class="descname">API</tt><big>(</big><span class="optional">[</span><em>auth_handler=None</em><span class="optional">]</span><span class="optional">[</span>, <em>host='api.twitter.com'</em><span class="optional">]</span><span class="optional">[</span>, <em>search_host='search.twitter.com'</em><span class="optional">]</span><span class="optional">[</span>, <em>cache=None</em><span class="optional">]</span><span class="optional">[</span>, <em>secure=False</em><span class="optional">]</span><span class="optional">[</span>, <em>api_root='/1'</em><span class="optional">]</span><span class="optional">[</span>, <em>search_root=''</em><span class="optional">]</span><span class="optional">[</span>, <em>retry_count=0</em><span class="optional">]</span><span class="optional">[</span>, <em>retry_delay=0</em><span class="optional">]</span><span class="optional">[</span>, <em>retry_errors=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class provides a wrapper for the API as provided by
+Twitter. The functions provided in this class are listed below.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>auth_handler</em> &#8211; authentication handler to be used</li>
+<li><em>host</em> &#8211; general API host</li>
+<li><em>search_host</em> &#8211; search API host</li>
+<li><em>cache</em> &#8211; cache backend to use</li>
+<li><em>secure</em> &#8211; if True use https</li>
+<li><em>api_root</em> &#8211; general API path root</li>
+<li><em>search_root</em> &#8211; search API path root</li>
+<li><em>retry_count</em> &#8211; default number of retries to attempt when error occurs</li>
+<li><em>retry_delay</em> &#8211; number of seconds to wait between retries</li>
+<li><em>retry_errors</em> &#8211; which HTTP status codes to retry</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <div class="section" id="timeline-methods">
 <h2>Timeline methods<a class="headerlink" href="#timeline-methods" title="Permalink to this headline">¶</a></h2>
@@ -59,8 +80,14 @@ Twitter. The functions provided in this class are listed below.</dd></dl>
 <dd><p>Returns the 20 most recent statuses from non-protected users who have
 set a custom user icon. The public timeline is cached for 60 seconds
 so requesting it more often than that is a waste of resources.</p>
-<p>Parameters: None</p>
-<p>Returns: list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -69,8 +96,23 @@ so requesting it more often than that is a waste of resources.</p>
 <dd><p>Returns the 20 most recent statuses, including retweets, posted by the
 authenticating user and that user&#8217;s friends. This is the equivalent of
 /timeline/home on the Web.</p>
-<p>Parameters: <em>since_id</em>, <em>max_id</em>, <em>count</em>, <em>page</em></p>
-<p>Returns: list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>since_id</em> &#8211; Returns only statuses with an ID greater than (that is, more recent than) the specified ID.</li>
+<li><em>max_id</em> &#8211; Returns only statuses with an ID less than (that is, older than) or equal to the specified ID.</li>
+<li><em>count</em> &#8211; Specifies the number of statuses to retrieve.</li>
+<li><em>page</em> &#8211; Specifies the page of results to retrieve. Note: there are pagination limits.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -78,7 +120,23 @@ authenticating user and that user&#8217;s friends. This is the equivalent of
 <!--[API.friends_timeline]--><tt class="descclassname">API.</tt><tt class="descname">friends_timeline</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.friends_timeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the 20 most recent statuses posted by the authenticating user
 and that user&#8217;s friends.</p>
-<p>Parameters: <em>since_id</em>, <em>max_id</em>, <em>count</em>, <em>page</em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>since_id</em> &#8211; Returns only statuses with an ID greater than (that is, more recent than) the specified ID.</li>
+<li><em>max_id</em> &#8211; Returns only statuses with an ID less than (that is, older than) or equal to the specified ID.</li>
+<li><em>count</em> &#8211; Specifies the number of statuses to retrieve.</li>
+<li><em>page</em> &#8211; Specifies the page of results to retrieve. Note: there are pagination limits.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 <p>Returns: list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
 </dd></dl>
 
@@ -86,10 +144,28 @@ and that user&#8217;s friends.</p>
 <dt id="API.user_timeline">
 <!--[API.user_timeline]--><tt class="descclassname">API.</tt><tt class="descname">user_timeline</tt><big>(</big><span class="optional">[</span><em>id/user_id/screen_name</em><span class="optional">]</span><span class="optional">[</span>, <em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.user_timeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the 20 most recent statuses posted from the authenticating
-user. It&#8217;s also possible to request another user&#8217;s timeline via the id
+user or the user specified. It&#8217;s also possible to request another user&#8217;s timeline via the id
 parameter.</p>
-<p>Parameters: <em>id</em> or <em>user_id</em> or <em>screen_name</em>, <em>since_id</em>, <em>max_id</em>, <em>count</em>, <em>page</em></p>
-<p>Returns: list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
+<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>since_id</em> &#8211; Returns only statuses with an ID greater than (that is, more recent than) the specified ID.</li>
+<li><em>max_id</em> &#8211; Returns only statuses with an ID less than (that is, older than) or equal to the specified ID.</li>
+<li><em>count</em> &#8211; Specifies the number of statuses to retrieve.</li>
+<li><em>page</em> &#8211; Specifies the page of results to retrieve. Note: there are pagination limits.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -97,16 +173,46 @@ parameter.</p>
 <!--[API.mentions]--><tt class="descclassname">API.</tt><tt class="descname">mentions</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.mentions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the 20 most recent mentions (status containing &#64;username) for
 the authenticating user.</p>
-<p>Parameters: <em>since_id</em>, <em>max_id</em>, <em>count</em>, <em>page</em></p>
-<p>Returns: list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>since_id</em> &#8211; Returns only statuses with an ID greater than (that is, more recent than) the specified ID.</li>
+<li><em>max_id</em> &#8211; Returns only statuses with an ID less than (that is, older than) or equal to the specified ID.</li>
+<li><em>count</em> &#8211; Specifies the number of statuses to retrieve.</li>
+<li><em>page</em> &#8211; Specifies the page of results to retrieve. Note: there are pagination limits.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.retweeted_by_me">
 <!--[API.retweeted_by_me]--><tt class="descclassname">API.</tt><tt class="descname">retweeted_by_me</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.retweeted_by_me" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the 20 most recent retweets posted by the authenticating user.</p>
-<p>Parameters: <em>since_id</em>, <em>max_id</em>, <em>count</em>, <em>page</em></p>
-<p>Returns: list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>since_id</em> &#8211; Returns only statuses with an ID greater than (that is, more recent than) the specified ID.</li>
+<li><em>max_id</em> &#8211; Returns only statuses with an ID less than (that is, older than) or equal to the specified ID.</li>
+<li><em>count</em> &#8211; Specifies the number of statuses to retrieve.</li>
+<li><em>page</em> &#8211; Specifies the page of results to retrieve. Note: there are pagination limits.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -114,17 +220,47 @@ the authenticating user.</p>
 <!--[API.retweeted_to_me]--><tt class="descclassname">API.</tt><tt class="descname">retweeted_to_me</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.retweeted_to_me" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the 20 most recent retweets posted by the authenticating
 user&#8217;s friends.</p>
-<p>Parameters: <em>since_id</em>, <em>max_id</em>, <em>count</em>, <em>page</em></p>
-<p>Returns: list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>since_id</em> &#8211; Returns only statuses with an ID greater than (that is, more recent than) the specified ID.</li>
+<li><em>max_id</em> &#8211; Returns only statuses with an ID less than (that is, older than) or equal to the specified ID.</li>
+<li><em>count</em> &#8211; Specifies the number of statuses to retrieve.</li>
+<li><em>page</em> &#8211; Specifies the page of results to retrieve. Note: there are pagination limits.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.retweets_of_me">
-<!--[API.retweets_of_me]--><tt class="descclassname">API.</tt><tt class="descname">retweets_of_me</tt><big>(</big><big>)</big><a class="headerlink" href="#API.retweets_of_me" title="Permalink to this definition">¶</a></dt>
+<!--[API.retweets_of_me]--><tt class="descclassname">API.</tt><tt class="descname">retweets_of_me</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.retweets_of_me" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the 20 most recent tweets of the authenticated user that have
 been retweeted by others.</p>
-<p>Parameters: <em>since_id</em>, <em>max_id</em>, <em>count</em>, <em>page</em></p>
-<p>Returns: list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>since_id</em> &#8211; Returns only statuses with an ID greater than (that is, more recent than) the specified ID.</li>
+<li><em>max_id</em> &#8211; Returns only statuses with an ID less than (that is, older than) or equal to the specified ID.</li>
+<li><em>count</em> &#8211; Specifies the number of statuses to retrieve.</li>
+<li><em>page</em> &#8211; Specifies the page of results to retrieve. Note: there are pagination limits.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -133,18 +269,46 @@ been retweeted by others.</p>
 <dl class="method">
 <dt id="API.get_status">
 <!--[API.get_status]--><tt class="descclassname">API.</tt><tt class="descname">get_status</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.get_status" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns a single status specified by the ID parameter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; The numerical ID of the status.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">Status</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
-<p>Returns a single status specified by the ID parameter.</p>
-<p>Parameters: <em>id</em> (Required)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">Status</span></tt> object</p>
 <dl class="method">
 <dt id="API.update_status">
-<!--[API.update_status]--><tt class="descclassname">API.</tt><tt class="descname">update_status</tt><big>(</big><em>status</em><span class="optional">[</span>, <em>in_reply_to_status_id</em><span class="optional">]</span><span class="optional">[</span>, <em>lat</em><span class="optional">]</span><span class="optional">[</span>, <em>long</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.update_status" title="Permalink to this definition">¶</a></dt>
+<!--[API.update_status]--><tt class="descclassname">API.</tt><tt class="descname">update_status</tt><big>(</big><em>status</em><span class="optional">[</span>, <em>in_reply_to_status_id</em><span class="optional">]</span><span class="optional">[</span>, <em>lat</em><span class="optional">]</span><span class="optional">[</span>, <em>long</em><span class="optional">]</span><span class="optional">[</span>, <em>source</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.update_status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update the authenticated user&#8217;s status. Statuses that are duplicates
 or too long will be silently ignored.</p>
-<p>Parameters: <em>status</em> (Required), <em>in_reply_to_status_id</em>, <em>lat</em>, <em>long</em></p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">Status</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>status</em> &#8211; The text of your status update.</li>
+<li><em>in_reply_to_status_id</em> &#8211; The ID of an existing status that the update is in reply to.</li>
+<li><em>lat</em> &#8211; The location&#8217;s latitude that this tweet refers to.</li>
+<li><em>long</em> &#8211; The location&#8217;s longitude that this tweet refers to.</li>
+<li><em>source</em> &#8211; Source of the update. Only supported by Identi.ca. Twitter ignores this parameter.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">Status</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -152,24 +316,61 @@ or too long will be silently ignored.</p>
 <!--[API.destroy_status]--><tt class="descclassname">API.</tt><tt class="descname">destroy_status</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.destroy_status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Destroy the status specified by the id parameter. The authenticated
 user must be the author of the status to destroy.</p>
-<p>Parameters: <em>id</em> (Required)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">Status</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; The numerical ID of the status.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">Status</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.retweet">
 <!--[API.retweet]--><tt class="descclassname">API.</tt><tt class="descname">retweet</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.retweet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retweets a tweet. Requires the id of the tweet you are retweeting.</p>
-<p>Parameters: <em>id</em> (Required)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">Status</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; The numerical ID of the status.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">Status</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.retweets">
-<!--[API.retweets]--><tt class="descclassname">API.</tt><tt class="descname">retweets</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.retweets" title="Permalink to this definition">¶</a></dt>
+<!--[API.retweets]--><tt class="descclassname">API.</tt><tt class="descname">retweets</tt><big>(</big><em>id</em><span class="optional">[</span>, <em>count</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.retweets" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns up to 100 of the first retweets of the given tweet.</p>
-<p>Parameters: <em>id</em> (Required), count</p>
-<p>Returns: list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; The numerical ID of the status.</li>
+<li><em>count</em> &#8211; Specifies the number of retweets to retrieve.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -177,18 +378,38 @@ user must be the author of the status to destroy.</p>
 <h2>User methods<a class="headerlink" href="#user-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="API.get_user">
-<!--[API.get_user]--><tt class="descclassname">API.</tt><tt class="descname">get_user</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.get_user" title="Permalink to this definition">¶</a></dt>
+<!--[API.get_user]--><tt class="descclassname">API.</tt><tt class="descname">get_user</tt><big>(</big><em>id/user_id/screen_name</em><big>)</big><a class="headerlink" href="#API.get_user" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns information about the specified user.</p>
-<p>Parameters: <em>id</em> OR screen_name OR id (One of these is Required)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
+<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.me">
 <!--[API.me]--><tt class="descclassname">API.</tt><tt class="descname">me</tt><big>(</big><big>)</big><a class="headerlink" href="#API.me" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the authenticated user&#8217;s information.</p>
-<p>Parameters: None</p>
-<p>Returns: User object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -197,8 +418,23 @@ user must be the author of the status to destroy.</p>
 <dd><p>Returns an user&#8217;s followers ordered in which they were added 100 at a
 time. If no user is specified by id/screen name, it defaults to the
 authenticated user.</p>
-<p>Parameters: <em>id</em> OR <em>screen_name</em> OR <em>user_id</em>, <em>cursor</em></p>
-<p>Returns: list of User objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
+<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>cursor</em> &#8211; Breaks the results into pages. Provide a value of  -1 to begin paging. Provide values as returned to in the response body&#8217;s next_cursor and previous_cursor attributes to page back and forth in the list.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">User</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -209,8 +445,22 @@ the same results returned by people search on Twitter.com will be
 returned by using this API (about being listed in the People
 Search). It is only possible to retrieve the first 1000 matches from
 this API.</p>
-<p>Parameters: <em>q</em> (Required. The query.), <em>per_page</em>, <em>page</em></p>
-<p>Returns: list of <tt class="xref docutils literal"><span class="pre">User</span></tt> objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>q</em> &#8211; The query to run against people search.</li>
+<li><em>per_page</em> &#8211; Specifies the number of statuses to retrieve. May not be greater than 20.</li>
+<li><em>page</em> &#8211; Specifies the page of results to retrieve. Note: there are pagination limits.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">User</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -220,25 +470,69 @@ this API.</p>
 <dt id="API.direct_messages">
 <!--[API.direct_messages]--><tt class="descclassname">API.</tt><tt class="descname">direct_messages</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.direct_messages" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns direct messages sent to the authenticating user.</p>
-<p>Parameters: <em>since_id</em>, <em>max_id</em>, <em>count</em>, <em>page</em></p>
-<p>Returns: list of DirectMessage objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>since_id</em> &#8211; Returns only statuses with an ID greater than (that is, more recent than) the specified ID.</li>
+<li><em>max_id</em> &#8211; Returns only statuses with an ID less than (that is, older than) or equal to the specified ID.</li>
+<li><em>count</em> &#8211; Specifies the number of statuses to retrieve.</li>
+<li><em>page</em> &#8211; Specifies the page of results to retrieve. Note: there are pagination limits.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">DirectMessage</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.sent_direct_messages">
 <!--[API.sent_direct_messages]--><tt class="descclassname">API.</tt><tt class="descname">sent_direct_messages</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.sent_direct_messages" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns direct messages sent by the authenticating user.</p>
-<p>Parameters: <em>since_id</em>, <em>max_id</em>, <em>count</em>, <em>page</em></p>
-<p>Returns: list of DirectMessage objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>since_id</em> &#8211; Returns only statuses with an ID greater than (that is, more recent than) the specified ID.</li>
+<li><em>max_id</em> &#8211; Returns only statuses with an ID less than (that is, older than) or equal to the specified ID.</li>
+<li><em>count</em> &#8211; Specifies the number of statuses to retrieve.</li>
+<li><em>page</em> &#8211; Specifies the page of results to retrieve. Note: there are pagination limits.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">DirectMessage</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.send_direct_message">
-<!--[API.send_direct_message]--><tt class="descclassname">API.</tt><tt class="descname">send_direct_message</tt><big>(</big><em>user</em>, <em>text</em><big>)</big><a class="headerlink" href="#API.send_direct_message" title="Permalink to this definition">¶</a></dt>
+<!--[API.send_direct_message]--><tt class="descclassname">API.</tt><tt class="descname">send_direct_message</tt><big>(</big><em>user/screen_name/user_id</em>, <em>text</em><big>)</big><a class="headerlink" href="#API.send_direct_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends a new direct message to the specified user from the
 authenticating user.</p>
-<p>Parameters: <em>user</em> (Required), <em>text</em> (Required)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">DirectMessage</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>user</em> &#8211; The ID or screen name of the recipient user.</li>
+<li><em>screen_name</em> &#8211; screen name of the recipient user</li>
+<li><em>user_id</em> &#8211; user id of the recipient user</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">DirectMessage</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -246,8 +540,20 @@ authenticating user.</p>
 <!--[API.destroy_direct_message]--><tt class="descclassname">API.</tt><tt class="descname">destroy_direct_message</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.destroy_direct_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Destroy a direct message. Authenticating user must be the recipient of
 the direct message.</p>
-<p>Parameters: <em>id</em> (Required)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">DirectMessage</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; The ID of the direct message to destroy.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">DirectMessage</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -255,18 +561,47 @@ the direct message.</p>
 <h2>Friendship Methods<a class="headerlink" href="#friendship-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="API.create_friendship">
-<!--[API.create_friendship]--><tt class="descclassname">API.</tt><tt class="descname">create_friendship</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.create_friendship" title="Permalink to this definition">¶</a></dt>
+<!--[API.create_friendship]--><tt class="descclassname">API.</tt><tt class="descname">create_friendship</tt><big>(</big><em>id/screen_name/user_id</em><span class="optional">[</span>, <em>follow</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.create_friendship" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new friendship with the specified user (aka follow).</p>
-<p>Parameters: <em>id</em> OR <em>screen_name</em> OR <em>user_id</em> (One of these is required)</p>
-<p>Returns: User object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
+<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+<li><em>follow</em> &#8211; Enable notifications for the target user in addition to becoming friends.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.destroy_friendship">
 <!--[API.destroy_friendship]--><tt class="descclassname">API.</tt><tt class="descname">destroy_friendship</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.destroy_friendship" title="Permalink to this definition">¶</a></dt>
 <dd><p>Destroy a friendship with the specified user (aka unfollow).</p>
-<p>Parameters: <em>id</em> OR <em>screen_name</em> OR <em>user_id</em> (One of these is required)</p>
-<p>Returns: User object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
+<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -274,27 +609,68 @@ the direct message.</p>
 <!--[API.exists_friendship]--><tt class="descclassname">API.</tt><tt class="descname">exists_friendship</tt><big>(</big><em>user_a</em>, <em>user_b</em><big>)</big><a class="headerlink" href="#API.exists_friendship" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if a friendship exists between two users. Will return True if
 user_a follows user_b, otherwise False.</p>
-<p>Parameters: <em>user_a</em> (Required), <em>user_b</em> (Required)</p>
-<p>Returns: True/False</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>user_a</em> &#8211; The ID or screen_name of the subject user.</li>
+<li><em>user_b</em> &#8211; The ID or screen_name of the user to test for following.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">True/False</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.show_friendship">
-<!--[API.show_friendship]--><tt class="descclassname">API.</tt><tt class="descname">show_friendship</tt><big>(</big><em>id/screen_name/user_id</em>, <em>target_id/target_screen_name</em><big>)</big><a class="headerlink" href="#API.show_friendship" title="Permalink to this definition">¶</a></dt>
+<!--[API.show_friendship]--><tt class="descclassname">API.</tt><tt class="descname">show_friendship</tt><big>(</big><em>source_id/source_screen_name</em>, <em>target_id/target_screen_name</em><big>)</big><a class="headerlink" href="#API.show_friendship" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns detailed information about the relationship between two users.</p>
-<p>Parameters: <em>id</em> OR <em>screen_name</em> OR <em>user_id</em> (One of these is
-required), <em>target_id</em> OR <em>target_screen_name</em> (One of these is
-required)</p>
-<p>Returns: Friendship object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>source_id</em> &#8211; The user_id of the subject user.</li>
+<li><em>source_screen_name</em> &#8211; The screen_name of the subject user.</li>
+<li><em>target_id</em> &#8211; The user_id of the target user.</li>
+<li><em>target_screen_name</em> &#8211; The screen_name of the target user.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">Friendship</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.friends_ids">
-<!--[API.friends_ids]--><tt class="descclassname">API.</tt><tt class="descname">friends_ids</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.friends_ids" title="Permalink to this definition">¶</a></dt>
+<!--[API.friends_ids]--><tt class="descclassname">API.</tt><tt class="descname">friends_ids</tt><big>(</big><em>id/screen_name/user_id</em><span class="optional">[</span>, <em>cursor</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.friends_ids" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns an array containing the IDs of users being followed by the
 specified user.</p>
-<p>Parameters: <em>id</em> OR <em>screen_name</em> OR <em>user_id</em> (One of these is required)</p>
-<p>Returns: list of Integers</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
+<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+<li><em>cursor</em> &#8211; Breaks the results into pages. Provide a value of  -1 to begin paging. Provide values as returned to in the response body&#8217;s next_cursor and previous_cursor attributes to page back and forth in the list.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of Integers</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -302,8 +678,23 @@ specified user.</p>
 <!--[API.followers_ids]--><tt class="descclassname">API.</tt><tt class="descname">followers_ids</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.followers_ids" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns an array containing the IDs of users following the specified
 user.</p>
-<p>Parameters: <em>id</em> OR screen_name OR user_id (One of these is required)</p>
-<p>Returns: list of Integers</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
+<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+<li><em>cursor</em> &#8211; Breaks the results into pages. Provide a value of  -1 to begin paging. Provide values as returned to in the response body&#8217;s next_cursor and previous_cursor attributes to page back and forth in the list.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of Integers</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -313,8 +704,14 @@ user.</p>
 <dt id="API.verify_credentials">
 <!--[API.verify_credentials]--><tt class="descclassname">API.</tt><tt class="descname">verify_credentials</tt><big>(</big><big>)</big><a class="headerlink" href="#API.verify_credentials" title="Permalink to this definition">¶</a></dt>
 <dd><p>Verify the supplied user credentials are valid.</p>
-<p>Parameters: None</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">User</span></tt> object if credentials are valid, otherwise False</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">User</span></tt> object if credentials are valid, otherwise False</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -326,8 +723,14 @@ hour. Calls to rate_limit_status do not count against the rate
 limit. If authentication credentials are provided, the rate limit
 status for the authenticating user is returned. Otherwise, the rate
 limit status for the requester&#8217;s IP address is returned.</p>
-<p>Parameters: None</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">JSON</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">JSON</span></tt> object</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -335,8 +738,20 @@ limit status for the requester&#8217;s IP address is returned.</p>
 <!--[API.set_delivery_device]--><tt class="descclassname">API.</tt><tt class="descname">set_delivery_device</tt><big>(</big><em>device</em><big>)</big><a class="headerlink" href="#API.set_delivery_device" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets which device Twitter delivers updates to for the authenticating
 user. Sending &#8220;none&#8221; as the device parameter will disable SMS updates.</p>
-<p>Parameters: <em>device</em> (Required. Valid values: sms OR none)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>device</em> &#8211; Must be one of: sms, none</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -344,8 +759,24 @@ user. Sending &#8220;none&#8221; as the device parameter will disable SMS update
 <!--[API.update_profile_colors]--><tt class="descclassname">API.</tt><tt class="descname">update_profile_colors</tt><big>(</big><span class="optional">[</span><em>profile_background_color</em><span class="optional">]</span><span class="optional">[</span>, <em>profile_text_color</em><span class="optional">]</span><span class="optional">[</span>, <em>profile_link_color</em><span class="optional">]</span><span class="optional">[</span>, <em>profile_sidebar_fill_color</em><span class="optional">]</span><span class="optional">[</span>, <em>profile_sidebar_border_color</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.update_profile_colors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets one or more hex values that control the color scheme of the
 authenticating user&#8217;s profile page on twitter.com.</p>
-<p>Parameters: <em>profile_background_color</em>, <em>profile_text_color</em>, <em>profile_link_color</em>, <em>profile_sidebar_fill_color</em>, <em>profile_sidebar_border_color</em></p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>profile_background_color</em> &#8211; </li>
+<li><em>profile_text_color</em> &#8211; </li>
+<li><em>profile_link_color</em> &#8211; </li>
+<li><em>profile_sidebar_fill_color</em> &#8211; </li>
+<li><em>profile_sidebar_border_color</em> &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -353,8 +784,20 @@ authenticating user&#8217;s profile page on twitter.com.</p>
 <!--[API.update_profile_image]--><tt class="descclassname">API.</tt><tt class="descname">update_profile_image</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#API.update_profile_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update the authenticating user&#8217;s profile image. Valid formats: GIF,
 JPG, or PNG</p>
-<p>Parameters: filename (Path to image file. Required)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>filename</em> &#8211; local path to image file to upload. Not a remote URL!</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -362,8 +805,20 @@ JPG, or PNG</p>
 <!--[API.update_profile_background_image]--><tt class="descclassname">API.</tt><tt class="descname">update_profile_background_image</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#API.update_profile_background_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update authenticating user&#8217;s background image. Valid formats: GIF,
 JPG, or PNG</p>
-<p>Parameters: filename (Path to image file. Required), tile</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>filename</em> &#8211; local path to image file to upload. Not a remote URL!</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -371,8 +826,23 @@ JPG, or PNG</p>
 <!--[API.update_profile]--><tt class="descclassname">API.</tt><tt class="descname">update_profile</tt><big>(</big><span class="optional">[</span><em>name</em><span class="optional">]</span><span class="optional">[</span>, <em>url</em><span class="optional">]</span><span class="optional">[</span>, <em>location</em><span class="optional">]</span><span class="optional">[</span>, <em>description</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.update_profile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets values that users are able to set under the &#8220;Account&#8221; tab of
 their settings page.</p>
-<p>Parameters: <em>name</em>, <em>url</em>, <em>location</em>, <em>description</em></p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>name</em> &#8211; Maximum of 20 characters</li>
+<li><em>url</em> &#8211; Maximum of 100 characters. Will be prepended with &#8220;<a class="reference external" href="http://">http://</a>&#8221; if not present</li>
+<li><em>location</em> &#8211; Maximum of 30 characters</li>
+<li><em>description</em> &#8211; Maximum of 160 characters</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -383,8 +853,21 @@ their settings page.</p>
 <!--[API.favorites]--><tt class="descclassname">API.</tt><tt class="descname">favorites</tt><big>(</big><span class="optional">[</span><em>id</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.favorites" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the favorite statuses for the authenticating user or user
 specified by the ID parameter.</p>
-<p>Parameters: <em>id</em>, <em>page</em></p>
-<p>Returns: list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; The ID or screen name of the user to request favorites</li>
+<li><em>page</em> &#8211; Specifies the page of results to retrieve. Note: there are pagination limits.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -392,8 +875,20 @@ specified by the ID parameter.</p>
 <!--[API.create_favorite]--><tt class="descclassname">API.</tt><tt class="descname">create_favorite</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.create_favorite" title="Permalink to this definition">¶</a></dt>
 <dd><p>Favorites the status specified in the ID parameter as the
 authenticating user.</p>
-<p>Parameters: <em>id</em> (Required)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">Status</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; The numerical ID of the status.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">Status</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -401,8 +896,20 @@ authenticating user.</p>
 <!--[API.destroy_favorite]--><tt class="descclassname">API.</tt><tt class="descname">destroy_favorite</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.destroy_favorite" title="Permalink to this definition">¶</a></dt>
 <dd><p>Un-favorites the status specified in the ID parameter as the
 authenticating user.</p>
-<p>Parameters: <em>id</em> (Required)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">Status</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; The numerical ID of the status.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">Status</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -412,8 +919,22 @@ authenticating user.</p>
 <dt id="API.enable_notifications">
 <!--[API.enable_notifications]--><tt class="descclassname">API.</tt><tt class="descname">enable_notifications</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.enable_notifications" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enables device notifications for updates from the specified user.</p>
-<p>Parameters: <em>id</em> OR <em>screen_name</em> OR <em>user_id</em> (One of these is required)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
+<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -421,8 +942,22 @@ authenticating user.</p>
 <!--[API.disable_notifications]--><tt class="descclassname">API.</tt><tt class="descname">disable_notifications</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.disable_notifications" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disables notifications for updates from the specified user to the
 authenticating user.</p>
-<p>Parameters: <em>id</em> OR <em>screen_name</em> OR <em>user_id</em> (One of these is required)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
+<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -433,8 +968,22 @@ authenticating user.</p>
 <!--[API.create_block]--><tt class="descclassname">API.</tt><tt class="descname">create_block</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.create_block" title="Permalink to this definition">¶</a></dt>
 <dd><p>Blocks the user specified in the ID parameter as the authenticating
 user. Destroys a friendship to the blocked user if it exists.</p>
-<p>Parameters: <em>id</em> OR <em>screen_name</em> OR <em>user_id</em> (One of these is required)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
+<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -442,16 +991,44 @@ user. Destroys a friendship to the blocked user if it exists.</p>
 <!--[API.destroy_block]--><tt class="descclassname">API.</tt><tt class="descname">destroy_block</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.destroy_block" title="Permalink to this definition">¶</a></dt>
 <dd><p>Un-blocks the user specified in the ID parameter for the
 authenticating user.</p>
-<p>Parameters: <em>id</em> OR <em>screen_name</em> OR <em>user_id</em> (One of these is required)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
+<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.exists_block">
 <!--[API.exists_block]--><tt class="descclassname">API.</tt><tt class="descname">exists_block</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.exists_block" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if the authenticated user is blocking the specified user.</p>
-<p>Parameters: <em>id</em> OR <em>screen_name</em> OR <em>user_id</em> (One of these is required)</p>
-<p>Returns: True/False</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
+<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">True/False</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -459,8 +1036,20 @@ authenticating user.</p>
 <!--[API.blocks]--><tt class="descclassname">API.</tt><tt class="descname">blocks</tt><big>(</big><span class="optional">[</span><em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.blocks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns an array of user objects that the authenticating user is
 blocking.</p>
-<p>Parameters: page</p>
-<p>Returns: list of <tt class="xref docutils literal"><span class="pre">User</span></tt> objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>page</em> &#8211; Specifies the page of results to retrieve. Note: there are pagination limits.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">User</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -468,8 +1057,14 @@ blocking.</p>
 <!--[API.blocks_ids]--><tt class="descclassname">API.</tt><tt class="descname">blocks_ids</tt><big>(</big><big>)</big><a class="headerlink" href="#API.blocks_ids" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns an array of numeric user ids the authenticating user is
 blocking.</p>
-<p>Parameters: None</p>
-<p>Returns: list of Integers</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">list of Integers</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -480,8 +1075,22 @@ blocking.</p>
 <!--[API.report_spam]--><tt class="descclassname">API.</tt><tt class="descname">report_spam</tt><big>(</big><span class="optional">[</span><em>id/user_id/screen_name</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.report_spam" title="Permalink to this definition">¶</a></dt>
 <dd><p>The user specified in the id is blocked by the authenticated user and
 reported as a spammer.</p>
-<p>Parameters: <em>id</em> OR <em>screen_name</em> OR <em>user_id</em> (One of these is required)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
+<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -491,8 +1100,14 @@ reported as a spammer.</p>
 <dt id="API.saved_searches">
 <!--[API.saved_searches]--><tt class="descclassname">API.</tt><tt class="descname">saved_searches</tt><big>(</big><big>)</big><a class="headerlink" href="#API.saved_searches" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the authenticated user&#8217;s saved search queries.</p>
-<p>Parameters: None</p>
-<p>Returns: list of <tt class="xref docutils literal"><span class="pre">SavedSearch</span></tt> objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">list of <tt class="xref docutils literal"><span class="pre">SavedSearch</span></tt> objects</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -500,16 +1115,40 @@ reported as a spammer.</p>
 <!--[API.get_saved_search]--><tt class="descclassname">API.</tt><tt class="descname">get_saved_search</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.get_saved_search" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve the data for a saved search owned by the authenticating user
 specified by the given id.</p>
-<p>Parameters: <em>id</em> (Required)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">SavedSearch</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; The id of the saved search to be retrieved.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">SavedSearch</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.create_saved_search">
 <!--[API.create_saved_search]--><tt class="descclassname">API.</tt><tt class="descname">create_saved_search</tt><big>(</big><em>query</em><big>)</big><a class="headerlink" href="#API.create_saved_search" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a saved search for the authenticated user.</p>
-<p>Parameters: <em>query</em> (Required)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">SavedSearch</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>query</em> &#8211; The query of the search the user would like to save.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">SavedSearch</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -517,8 +1156,20 @@ specified by the given id.</p>
 <!--[API.destroy_saved_search]--><tt class="descclassname">API.</tt><tt class="descname">destroy_saved_search</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.destroy_saved_search" title="Permalink to this definition">¶</a></dt>
 <dd><p>Destroys a saved search for the authenticated user. The search
 specified by id must be owned by the authenticating user.</p>
-<p>Parameters: <em>id</em> (Required)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">SavedSearch</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>id</em> &#8211; The id of the saved search to be deleted.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">SavedSearch</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -529,16 +1180,40 @@ specified by id must be owned by the authenticating user.</p>
 <!--[API.test]--><tt class="descclassname">API.</tt><tt class="descname">test</tt><big>(</big><big>)</big><a class="headerlink" href="#API.test" title="Permalink to this definition">¶</a></dt>
 <dd><p>Invokes the test method in the Twitter API. Return True if successful,
 otherwise False.</p>
-<p>Parameters: None</p>
-<p>Returns: True/False</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">True/False</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.search">
-<!--[API.search]--><tt class="descclassname">API.</tt><tt class="descname">search</tt><big>(</big><big>)</big><a class="headerlink" href="#API.search" title="Permalink to this definition">¶</a></dt>
+<!--[API.search]--><tt class="descclassname">API.</tt><tt class="descname">search</tt><big>(</big><em>q</em><span class="optional">[</span>, <em>lang</em><span class="optional">]</span><span class="optional">[</span>, <em>locale</em><span class="optional">]</span><span class="optional">[</span>, <em>rpp</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><span class="optional">[</span>, <em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>geocode</em><span class="optional">]</span><span class="optional">[</span>, <em>show_user</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.search" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns tweets that match a specified query.</p>
-<p>Parameters: q (Required. The search query string.), lang, locale, rpp, page, since_id, geocode, show_user</p>
-<p>Returns: list of <tt class="xref docutils literal"><span class="pre">SearchResult</span></tt> objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>q</em> &#8211; the search query string</li>
+<li><em>lang</em> &#8211; Restricts tweets to the given language, given by an ISO 639-1 code.</li>
+<li><em>locale</em> &#8211; Specify the language of the query you are sending. This is intended for language-specific clients and the default should work in the majority of cases.</li>
+<li><em>rpp</em> &#8211; The number of tweets to return per page, up to a max of 100.</li>
+<li><em>page</em> &#8211; The page number (starting at 1) to return, up to a max of roughly 1500 results (based on rpp * page.</li>
+<li><em>geocode</em> &#8211; Returns tweets by users located within a given radius of the given latitude/longitude.  The location is preferentially taking from the Geotagging API, but will fall back to their Twitter profile. The parameter value is specified by &#8220;latitide,longitude,radius&#8221;, where radius units must be specified as either &#8220;mi&#8221; (miles) or &#8220;km&#8221; (kilometers). Note that you cannot use the near operator via the API to geocode arbitrary locations; however you can use this geocode parameter to search near geocodes directly.</li>
+<li><em>show_user</em> &#8211; When true, prepends &#8220;&lt;user&gt;:&#8221; to the beginning of the tweet. This is useful for readers that do not display Atom&#8217;s author field. The default is false.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">SearchResult</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -547,8 +1222,14 @@ otherwise False.</p>
 <dd><p>Returns the top ten topics that are currently trending on Twitter. The
 response includes the time of the request, the name of each trend, and
 the url to the Twitter Search results page for that topic.</p>
-<p>Parameters: None</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">JSON</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">JSON</span></tt> object</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -557,24 +1238,62 @@ the url to the Twitter Search results page for that topic.</p>
 <dd><p>Returns the current top 10 trending topics on Twitter. The response
 includes the time of the request, the name of each trending topic, and
 query used on Twitter Search results page for that topic.</p>
-<p>Parameters: <em>exclude</em></p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">JSON</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>exclude</em> &#8211; Setting this equal to hashtags will remove all hashtags from the trends list.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">JSON</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.trends_daily">
 <!--[API.trends_daily]--><tt class="descclassname">API.</tt><tt class="descname">trends_daily</tt><big>(</big><span class="optional">[</span><em>date</em><span class="optional">]</span><span class="optional">[</span>, <em>exclude</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.trends_daily" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the top 20 trending topics for each hour in a given day.</p>
-<p>Parameters: <em>date</em>, <em>exclude</em></p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">JSON</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>date</em> &#8211; Permits specifying a start date for the report. The date should be formatted YYYY-MM-DD.</li>
+<li><em>exclude</em> &#8211; Setting this equal to hashtags will remove all hashtags from the trends list.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">JSON</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.trends_weekly">
 <!--[API.trends_weekly]--><tt class="descclassname">API.</tt><tt class="descname">trends_weekly</tt><big>(</big><span class="optional">[</span><em>date</em><span class="optional">]</span><span class="optional">[</span>, <em>exclude</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.trends_weekly" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the top 30 trending topics for each day in a given week.</p>
-<p>Parameters: <em>date</em>, <em>exclude</em></p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">JSON</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>date</em> &#8211; Permits specifying a start date for the report. The date should be formatted YYYY-MM-DD.</li>
+<li><em>exclude</em> &#8211; Setting this equal to hashtags will remove all hashtags from the trends list.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">JSON</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -582,28 +1301,69 @@ query used on Twitter Search results page for that topic.</p>
 <h2>List Methods<a class="headerlink" href="#list-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="API.create_list">
-<!--[API.create_list]--><tt class="descclassname">API.</tt><tt class="descname">create_list</tt><big>(</big><em>name</em><span class="optional">[</span>, <em>mode</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.create_list" title="Permalink to this definition">¶</a></dt>
+<!--[API.create_list]--><tt class="descclassname">API.</tt><tt class="descname">create_list</tt><big>(</big><em>name</em><span class="optional">[</span>, <em>mode</em><span class="optional">]</span><span class="optional">[</span>, <em>description</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.create_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a new list for the authenticated user. Accounts are limited to
 20 lists.</p>
-<p>Parameters: <em>name</em> (Required), <em>mode</em> (public/private default: public)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">List</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>name</em> &#8211; The name of the new list.</li>
+<li><em>mode</em> &#8211; Whether your list is public or private. Values can be public or private. Lists are public by default if no mode is specified.</li>
+<li><em>description</em> &#8211; The description of the list you are creating.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">List</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.destroy_list">
 <!--[API.destroy_list]--><tt class="descclassname">API.</tt><tt class="descname">destroy_list</tt><big>(</big><em>slug</em><big>)</big><a class="headerlink" href="#API.destroy_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Deletes the specified list. Must be owned by the authenticated user.</p>
-<p>Parameters: <em>slug</em> (Required. May also be the list ID.)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">List</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>slug</em> &#8211; the slug name or numerical ID of the list</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">List</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.update_list">
-<!--[API.update_list]--><tt class="descclassname">API.</tt><tt class="descname">update_list</tt><big>(</big><em>slug</em><span class="optional">[</span>, <em>name</em><span class="optional">]</span><span class="optional">[</span>, <em>mode</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.update_list" title="Permalink to this definition">¶</a></dt>
+<!--[API.update_list]--><tt class="descclassname">API.</tt><tt class="descname">update_list</tt><big>(</big><em>slug</em><span class="optional">[</span>, <em>name</em><span class="optional">]</span><span class="optional">[</span>, <em>mode</em><span class="optional">]</span><span class="optional">[</span>, <em>description</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.update_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates the specified list. Note: this current throws a 500. Twitter
 is looking into the issue.</p>
-<p>Parameters: <em>slug</em> (Required. May also be the list ID.), <em>name</em>, <em>mode</em> (public/private)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">List</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>slug</em> &#8211; the slug name or numerical ID of the list</li>
+<li><em>name</em> &#8211; What you&#8217;d like to change the lists name to.</li>
+<li><em>mode</em> &#8211; Whether your list is public or private. Values can be public or private. Lists are public by default if no mode is specified.</li>
+<li><em>description</em> &#8211; What you&#8217;d like to change the list description to.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">List</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -612,32 +1372,85 @@ is looking into the issue.</p>
 <dd><p>List the lists of the specified user. Private lists will be included
 if the authenticated users is the same as the user who&#8217;s lists are
 being returned.</p>
-<p>Parameters: <em>cursor</em></p>
-<p>Returns: list of <tt class="xref docutils literal"><span class="pre">List</span></tt> objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>cursor</em> &#8211; Breaks the results into pages. Provide a value of  -1 to begin paging. Provide values as returned to in the response body&#8217;s next_cursor and previous_cursor attributes to page back and forth in the list.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">List</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.lists_memberships">
 <!--[API.lists_memberships]--><tt class="descclassname">API.</tt><tt class="descname">lists_memberships</tt><big>(</big><span class="optional">[</span><em>cursor</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.lists_memberships" title="Permalink to this definition">¶</a></dt>
 <dd><p>List the lists the specified user has been added to.</p>
-<p>Parameters: <em>cursor</em></p>
-<p>Returns: list of <tt class="xref docutils literal"><span class="pre">List</span></tt> objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>cursor</em> &#8211; Breaks the results into pages. Provide a value of  -1 to begin paging. Provide values as returned to in the response body&#8217;s next_cursor and previous_cursor attributes to page back and forth in the list.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">List</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.lists_subscriptions">
 <!--[API.lists_subscriptions]--><tt class="descclassname">API.</tt><tt class="descname">lists_subscriptions</tt><big>(</big><span class="optional">[</span><em>cursor</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.lists_subscriptions" title="Permalink to this definition">¶</a></dt>
 <dd><p>List the lists the specified user follows.</p>
-<p>Parameters: <em>cursor</em></p>
-<p>Returns: list of <tt class="xref docutils literal"><span class="pre">List</span></tt> objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>cursor</em> &#8211; Breaks the results into pages. Provide a value of  -1 to begin paging. Provide values as returned to in the response body&#8217;s next_cursor and previous_cursor attributes to page back and forth in the list.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">List</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.list_timeline">
 <!--[API.list_timeline]--><tt class="descclassname">API.</tt><tt class="descname">list_timeline</tt><big>(</big><em>owner</em>, <em>slug</em><span class="optional">[</span>, <em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.list_timeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Show tweet timeline for members of the specified list.</p>
-<p>Parameters: <em>owner</em> (Required.), <em>slug</em> (Required. May also be the list ID.), <em>since_id</em>, <em>max_id</em>, <em>count</em>, <em>page</em></p>
-<p>Returns: list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>owner</em> &#8211; the screen name of the owner of the list</li>
+<li><em>slug</em> &#8211; the slug name or numerical ID of the list</li>
+<li><em>since_id</em> &#8211; Returns only statuses with an ID greater than (that is, more recent than) the specified ID.</li>
+<li><em>max_id</em> &#8211; Returns only statuses with an ID less than (that is, older than) or equal to the specified ID.</li>
+<li><em>count</em> &#8211; Specifies the number of statuses to retrieve.</li>
+<li><em>page</em> &#8211; Specifies the page of results to retrieve. Note: there are pagination limits.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">Status</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -645,17 +1458,43 @@ being returned.</p>
 <!--[API.get_list]--><tt class="descclassname">API.</tt><tt class="descname">get_list</tt><big>(</big><em>owner</em>, <em>slug</em><big>)</big><a class="headerlink" href="#API.get_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Show the specified list. Private lists will only be shown if the
 authenticated user owns the specified list.</p>
-<p>Parameters: <em>owner</em> (Required.), <em>slug</em> (Required. May also be the list ID.)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">List</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>owner</em> &#8211; the screen name of the owner of the list</li>
+<li><em>slug</em> &#8211; the slug name or numerical ID of the list</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">List</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
-<dt>
-<tt class="descname">API.add_list_member*slug, id)</tt></dt>
+<dt id="API.add_list_member">
+<!--[API.add_list_member]--><tt class="descclassname">API.</tt><tt class="descname">add_list_member</tt><big>(</big><em>slug</em>, <em>id</em><big>)</big><a class="headerlink" href="#API.add_list_member" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a member to a list. The authenticated user must own the list to be
 able to add members to it. Lists are limited to having 500 members.</p>
-<p>Parameters: <em>slug</em> (Required. May also be the list ID.), <em>id</em> (Required. ID of user to add.)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">List</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>slug</em> &#8211; the slug name or numerical ID of the list</li>
+<li><em>id</em> &#8211; the ID of the user to add as a member</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">List</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -663,56 +1502,198 @@ able to add members to it. Lists are limited to having 500 members.</p>
 <!--[API.remove_list_member]--><tt class="descclassname">API.</tt><tt class="descname">remove_list_member</tt><big>(</big><em>slug</em>, <em>id</em><big>)</big><a class="headerlink" href="#API.remove_list_member" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes the specified member from the list. The authenticated user
 must be the list&#8217;s owner to remove members from the list.</p>
-<p>Parameters: <em>slug</em> (Required. May also be the list ID.), <em>id</em> (Required. ID of user to remove.)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">List</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>slug</em> &#8211; the slug name or numerical ID of the list</li>
+<li><em>id</em> &#8211; the ID of the user to remove as a member</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">List</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.list_members">
 <!--[API.list_members]--><tt class="descclassname">API.</tt><tt class="descname">list_members</tt><big>(</big><em>owner</em>, <em>slug</em>, <em>cursor</em><big>)</big><a class="headerlink" href="#API.list_members" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the members of the specified list.</p>
-<p>Parameters: <em>owner</em> (Required.), <em>slug</em> (Required. May also be list ID.), <em>cursor</em></p>
-<p>Returns: list of <tt class="xref docutils literal"><span class="pre">User</span></tt> objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>owner</em> &#8211; the screen name of the owner of the list</li>
+<li><em>slug</em> &#8211; the slug name or numerical ID of the list</li>
+<li><em>cursor</em> &#8211; Breaks the results into pages. Provide a value of  -1 to begin paging. Provide values as returned to in the response body&#8217;s next_cursor and previous_cursor attributes to page back and forth in the list.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">User</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.is_list_member">
 <!--[API.is_list_member]--><tt class="descclassname">API.</tt><tt class="descname">is_list_member</tt><big>(</big><em>owner</em>, <em>slug</em>, <em>id</em><big>)</big><a class="headerlink" href="#API.is_list_member" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if a user is a member of the specified list.</p>
-<p>Parameters: <em>owner</em> (Required.), <em>slug</em> (Required. May also be list ID.), <em>id</em> (Required. <tt class="xref docutils literal"><span class="pre">User</span></tt> to check if subscribed to the list.)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">User</span></tt> object if user is a member of list, otherwise False.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>owner</em> &#8211; the screen name of the owner of the list</li>
+<li><em>slug</em> &#8211; the slug name or numerical ID of the list</li>
+<li><em>id</em> &#8211; the ID of the user to check</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">User</span></tt> object if user is a member of list, otherwise False.</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.subscribe_list">
 <!--[API.subscribe_list]--><tt class="descclassname">API.</tt><tt class="descname">subscribe_list</tt><big>(</big><em>owner</em>, <em>slug</em><big>)</big><a class="headerlink" href="#API.subscribe_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make the authenticated user follow the specified list.</p>
-<p>Parameters: <em>owner</em> (Required.), <em>slug</em> (Required. May also be list ID.)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">List</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>owner</em> &#8211; the screen name of the owner of the list</li>
+<li><em>slug</em> &#8211; the slug name or numerical ID of the list</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">List</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.unsubscribe_list">
 <!--[API.unsubscribe_list]--><tt class="descclassname">API.</tt><tt class="descname">unsubscribe_list</tt><big>(</big><em>owner</em>, <em>slug</em><big>)</big><a class="headerlink" href="#API.unsubscribe_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unsubscribes the authenticated user form the specified list.</p>
-<p>Parameters: <em>owner</em> (Required.), <em>slug</em> (Required. May also be list ID.)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">List</span></tt> object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>owner</em> &#8211; the screen name of the owner of the list</li>
+<li><em>slug</em> &#8211; the slug name or numerical ID of the list</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">List</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.list_subscribers">
 <!--[API.list_subscribers]--><tt class="descclassname">API.</tt><tt class="descname">list_subscribers</tt><big>(</big><em>owner</em>, <em>slug</em><span class="optional">[</span>, <em>cursor</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.list_subscribers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the subscribers of the specified list.</p>
-<p>Parameters: <em>owner</em> (Required.), <em>slug</em> (Required. May also be list ID.), <em>cursor</em></p>
-<p>Returns: list of <tt class="xref docutils literal"><span class="pre">User</span></tt> objects</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>owner</em> &#8211; the screen name of the owner of the list</li>
+<li><em>slug</em> &#8211; the slug name or numerical ID of the list</li>
+<li><em>cursor</em> &#8211; Breaks the results into pages. Provide a value of  -1 to begin paging. Provide values as returned to in the response body&#8217;s next_cursor and previous_cursor attributes to page back and forth in the list.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">User</span></tt> objects</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="API.is_subscribed_list">
 <!--[API.is_subscribed_list]--><tt class="descclassname">API.</tt><tt class="descname">is_subscribed_list</tt><big>(</big><em>owner</em>, <em>slug</em>, <em>id</em><big>)</big><a class="headerlink" href="#API.is_subscribed_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if the specified user is a subscriber of the specified list.</p>
-<p>Parameters: <em>owner</em> (Required.), <em>slug</em> (Required. May also be list ID.), <em>id</em> (Required. <tt class="xref docutils literal"><span class="pre">User</span></tt> to check if subscribed to the list.)</p>
-<p>Returns: <tt class="xref docutils literal"><span class="pre">User</span></tt> object if user is subscribed to the list, otherwise False.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>owner</em> &#8211; the screen name of the owner of the list</li>
+<li><em>slug</em> &#8211; the slug name or numerical ID of the list</li>
+<li><em>id</em> &#8211; the ID of the user to check</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">User</span></tt> object if user is subscribed to the list, otherwise False.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="local-trends-methods">
+<h2>Local Trends Methods<a class="headerlink" href="#local-trends-methods" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="API.trends_available">
+<!--[API.trends_available]--><tt class="descclassname">API.</tt><tt class="descname">trends_available</tt><big>(</big><span class="optional">[</span><em>lat</em><span class="optional">]</span><span class="optional">[</span>, <em>long</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.trends_available" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the locations that Twitter has trending topic information for. The response is an array of &#8220;locations&#8221; that encode the location&#8217;s WOEID (a Yahoo! Where On Earth ID) and some other human-readable information such as a canonical name and country the location belongs in. [Coming soon]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>lat</em> &#8211; If passed in conjunction with long, then the available trend locations will be sorted by distance to the lat and long passed in.  The sort is nearest to furthest.</li>
+<li><em>long</em> &#8211; See lat.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">JSON</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="API.trends_location">
+<!--[API.trends_location]--><tt class="descclassname">API.</tt><tt class="descname">trends_location</tt><big>(</big><em>woeid</em><big>)</big><a class="headerlink" href="#API.trends_location" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the top 10 trending topics for a specific location Twitter has trending topic information for. The response is an array of &#8220;trend&#8221; objects that encode the name of the trending topic, the query parameter that can be used to search for the topic on Search, and the direct URL that can be issued against Search. This information is cached for five minutes, and therefore users are discouraged from querying these endpoints faster than once every five minutes.  Global trends information is also available from this API by using a WOEID of 1.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>woeid</em> &#8211; <ul>
+<li>The WOEID of the location to be querying for.</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">JSON</span></tt> object</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -741,6 +1722,7 @@ must be the list&#8217;s owner to remove members from the list.</p>
 <li><a class="reference external" href="#saved-searches-methods">Saved Searches Methods</a></li>
 <li><a class="reference external" href="#help-methods">Help Methods</a></li>
 <li><a class="reference external" href="#list-methods">List Methods</a></li>
+<li><a class="reference external" href="#local-trends-methods">Local Trends Methods</a></li>
 </ul>
 </li>
 </ul>
