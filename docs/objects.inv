@@ -1,6 +1,7 @@
 # Sphinx inventory version 1
 # Project: tweepy
-# Version: 1.4
+# Version: 1.5
+API.reverse_geocode method api.html
 API.get_status method api.html
 API.followers method api.html
 API.trends_location method api.html
@@ -69,6 +70,7 @@ API.get_list method api.html
 API.create_saved_search method api.html
 API.report_spam method api.html
 API.add_list_member method api.html
+API.geo_id method api.html
 API.trends_current method api.html
 API class api.html
 API.search_users method api.html

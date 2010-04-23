@@ -1,23 +1,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>API Reference &mdash; tweepy v1.4 documentation</title>
-    <link rel="stylesheet" href="static/default.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <title>API Reference &mdash; tweepy v1.5 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '1.4',
+        URL_ROOT:    '#',
+        VERSION:     '1.5',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="static/jquery.js"></script>
-    <script type="text/javascript" src="static/doctools.js"></script>
-    <link rel="top" title="tweepy v1.4 documentation" href="index.html" />
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="tweepy v1.5 documentation" href="index.html" />
     <link rel="prev" title="Cursor Tutorial" href="cursor_tutorial.html" /> 
   </head>
   <body>
@@ -30,15 +32,15 @@
         <li class="right" >
           <a href="cursor_tutorial.html" title="Cursor Tutorial"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">tweepy v1.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">tweepy v1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
+
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body">
             
-  
   <span class="target" id="api-reference"></span><div class="section" id="id1">
 <h1>API Reference<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>This page contains some basic documentation for the Tweepy module.</p>
@@ -47,7 +49,7 @@
 <h1><tt class="xref docutils literal"><span class="pre">tweepy.api</span></tt> &#8212; Twitter API wrapper<a class="headerlink" href="#tweepy-api-twitter-api-wrapper" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="API">
-<!--[API]-->class <tt class="descname">API</tt><big>(</big><span class="optional">[</span><em>auth_handler=None</em><span class="optional">]</span><span class="optional">[</span>, <em>host='api.twitter.com'</em><span class="optional">]</span><span class="optional">[</span>, <em>search_host='search.twitter.com'</em><span class="optional">]</span><span class="optional">[</span>, <em>cache=None</em><span class="optional">]</span><span class="optional">[</span>, <em>secure=False</em><span class="optional">]</span><span class="optional">[</span>, <em>api_root='/1'</em><span class="optional">]</span><span class="optional">[</span>, <em>search_root=''</em><span class="optional">]</span><span class="optional">[</span>, <em>retry_count=0</em><span class="optional">]</span><span class="optional">[</span>, <em>retry_delay=0</em><span class="optional">]</span><span class="optional">[</span>, <em>retry_errors=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descname">API</tt><big>(</big><span class="optional">[</span><em>auth_handler=None</em><span class="optional">]</span><span class="optional">[</span>, <em>host='api.twitter.com'</em><span class="optional">]</span><span class="optional">[</span>, <em>search_host='search.twitter.com'</em><span class="optional">]</span><span class="optional">[</span>, <em>cache=None</em><span class="optional">]</span><span class="optional">[</span>, <em>secure=False</em><span class="optional">]</span><span class="optional">[</span>, <em>api_root='/1'</em><span class="optional">]</span><span class="optional">[</span>, <em>search_root=''</em><span class="optional">]</span><span class="optional">[</span>, <em>retry_count=0</em><span class="optional">]</span><span class="optional">[</span>, <em>retry_delay=0</em><span class="optional">]</span><span class="optional">[</span>, <em>retry_errors=None</em><span class="optional">]</span><span class="optional">[</span>, <em>model_factory</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class provides a wrapper for the API as provided by
 Twitter. The functions provided in this class are listed below.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -65,6 +67,7 @@ Twitter. The functions provided in this class are listed below.</p>
 <li><em>retry_count</em> &#8211; default number of retries to attempt when error occurs</li>
 <li><em>retry_delay</em> &#8211; number of seconds to wait between retries</li>
 <li><em>retry_errors</em> &#8211; which HTTP status codes to retry</li>
+<li><em>model_factory</em> &#8211; used for creating new model instances</li>
 </ul>
 </td>
 </tr>
@@ -76,7 +79,7 @@ Twitter. The functions provided in this class are listed below.</p>
 <h2>Timeline methods<a class="headerlink" href="#timeline-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="API.public_timeline">
-<!--[API.public_timeline]--><tt class="descclassname">API.</tt><tt class="descname">public_timeline</tt><big>(</big><big>)</big><a class="headerlink" href="#API.public_timeline" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">public_timeline</tt><big>(</big><big>)</big><a class="headerlink" href="#API.public_timeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the 20 most recent statuses from non-protected users who have
 set a custom user icon. The public timeline is cached for 60 seconds
 so requesting it more often than that is a waste of resources.</p>
@@ -92,7 +95,7 @@ so requesting it more often than that is a waste of resources.</p>
 
 <dl class="method">
 <dt id="API.home_timeline">
-<!--[API.home_timeline]--><tt class="descclassname">API.</tt><tt class="descname">home_timeline</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.home_timeline" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">home_timeline</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.home_timeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the 20 most recent statuses, including retweets, posted by the
 authenticating user and that user&#8217;s friends. This is the equivalent of
 /timeline/home on the Web.</p>
@@ -117,7 +120,7 @@ authenticating user and that user&#8217;s friends. This is the equivalent of
 
 <dl class="method">
 <dt id="API.friends_timeline">
-<!--[API.friends_timeline]--><tt class="descclassname">API.</tt><tt class="descname">friends_timeline</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.friends_timeline" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">friends_timeline</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.friends_timeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the 20 most recent statuses posted by the authenticating user
 and that user&#8217;s friends.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -142,7 +145,7 @@ and that user&#8217;s friends.</p>
 
 <dl class="method">
 <dt id="API.user_timeline">
-<!--[API.user_timeline]--><tt class="descclassname">API.</tt><tt class="descname">user_timeline</tt><big>(</big><span class="optional">[</span><em>id/user_id/screen_name</em><span class="optional">]</span><span class="optional">[</span>, <em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.user_timeline" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">user_timeline</tt><big>(</big><span class="optional">[</span><em>id/user_id/screen_name</em><span class="optional">]</span><span class="optional">[</span>, <em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.user_timeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the 20 most recent statuses posted from the authenticating
 user or the user specified. It&#8217;s also possible to request another user&#8217;s timeline via the id
 parameter.</p>
@@ -152,8 +155,8 @@ parameter.</p>
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
-<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
-<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specifies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+<li><em>screen_name</em> &#8211; Specifies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
 <li><em>since_id</em> &#8211; Returns only statuses with an ID greater than (that is, more recent than) the specified ID.</li>
 <li><em>max_id</em> &#8211; Returns only statuses with an ID less than (that is, older than) or equal to the specified ID.</li>
 <li><em>count</em> &#8211; Specifies the number of statuses to retrieve.</li>
@@ -170,7 +173,7 @@ parameter.</p>
 
 <dl class="method">
 <dt id="API.mentions">
-<!--[API.mentions]--><tt class="descclassname">API.</tt><tt class="descname">mentions</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.mentions" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">mentions</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.mentions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the 20 most recent mentions (status containing &#64;username) for
 the authenticating user.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -194,7 +197,7 @@ the authenticating user.</p>
 
 <dl class="method">
 <dt id="API.retweeted_by_me">
-<!--[API.retweeted_by_me]--><tt class="descclassname">API.</tt><tt class="descname">retweeted_by_me</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.retweeted_by_me" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">retweeted_by_me</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.retweeted_by_me" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the 20 most recent retweets posted by the authenticating user.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -217,7 +220,7 @@ the authenticating user.</p>
 
 <dl class="method">
 <dt id="API.retweeted_to_me">
-<!--[API.retweeted_to_me]--><tt class="descclassname">API.</tt><tt class="descname">retweeted_to_me</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.retweeted_to_me" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">retweeted_to_me</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.retweeted_to_me" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the 20 most recent retweets posted by the authenticating
 user&#8217;s friends.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -241,7 +244,7 @@ user&#8217;s friends.</p>
 
 <dl class="method">
 <dt id="API.retweets_of_me">
-<!--[API.retweets_of_me]--><tt class="descclassname">API.</tt><tt class="descname">retweets_of_me</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.retweets_of_me" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">retweets_of_me</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.retweets_of_me" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the 20 most recent tweets of the authenticated user that have
 been retweeted by others.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -268,19 +271,15 @@ been retweeted by others.</p>
 <h2>Status methods<a class="headerlink" href="#status-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="API.get_status">
-<!--[API.get_status]--><tt class="descclassname">API.</tt><tt class="descname">get_status</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.get_status" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">get_status</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.get_status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a single status specified by the ID parameter.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>id</em> &#8211; The numerical ID of the status.</li>
-</ul>
-</td>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>id</em> &#8211; The numerical ID of the status.</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">Status</span></tt> object</p>
-</td>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">Status</span></tt> object</td>
 </tr>
 </tbody>
 </table>
@@ -288,7 +287,7 @@ been retweeted by others.</p>
 
 <dl class="method">
 <dt id="API.update_status">
-<!--[API.update_status]--><tt class="descclassname">API.</tt><tt class="descname">update_status</tt><big>(</big><em>status</em><span class="optional">[</span>, <em>in_reply_to_status_id</em><span class="optional">]</span><span class="optional">[</span>, <em>lat</em><span class="optional">]</span><span class="optional">[</span>, <em>long</em><span class="optional">]</span><span class="optional">[</span>, <em>source</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.update_status" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">update_status</tt><big>(</big><em>status</em><span class="optional">[</span>, <em>in_reply_to_status_id</em><span class="optional">]</span><span class="optional">[</span>, <em>lat</em><span class="optional">]</span><span class="optional">[</span>, <em>long</em><span class="optional">]</span><span class="optional">[</span>, <em>source</em><span class="optional">]</span><span class="optional">[</span>, <em>place_id</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.update_status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update the authenticated user&#8217;s status. Statuses that are duplicates
 or too long will be silently ignored.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -301,6 +300,7 @@ or too long will be silently ignored.</p>
 <li><em>lat</em> &#8211; The location&#8217;s latitude that this tweet refers to.</li>
 <li><em>long</em> &#8211; The location&#8217;s longitude that this tweet refers to.</li>
 <li><em>source</em> &#8211; Source of the update. Only supported by Identi.ca. Twitter ignores this parameter.</li>
+<li><em>id</em> &#8211; Twitter ID of location which is listed in the Tweet if geolocation is enabled for the user.</li>
 </ul>
 </td>
 </tr>
@@ -313,20 +313,16 @@ or too long will be silently ignored.</p>
 
 <dl class="method">
 <dt id="API.destroy_status">
-<!--[API.destroy_status]--><tt class="descclassname">API.</tt><tt class="descname">destroy_status</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.destroy_status" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">destroy_status</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.destroy_status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Destroy the status specified by the id parameter. The authenticated
 user must be the author of the status to destroy.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>id</em> &#8211; The numerical ID of the status.</li>
-</ul>
-</td>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>id</em> &#8211; The numerical ID of the status.</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">Status</span></tt> object</p>
-</td>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">Status</span></tt> object</td>
 </tr>
 </tbody>
 </table>
@@ -334,19 +330,15 @@ user must be the author of the status to destroy.</p>
 
 <dl class="method">
 <dt id="API.retweet">
-<!--[API.retweet]--><tt class="descclassname">API.</tt><tt class="descname">retweet</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.retweet" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">retweet</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.retweet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retweets a tweet. Requires the id of the tweet you are retweeting.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>id</em> &#8211; The numerical ID of the status.</li>
-</ul>
-</td>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>id</em> &#8211; The numerical ID of the status.</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">Status</span></tt> object</p>
-</td>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">Status</span></tt> object</td>
 </tr>
 </tbody>
 </table>
@@ -354,7 +346,7 @@ user must be the author of the status to destroy.</p>
 
 <dl class="method">
 <dt id="API.retweets">
-<!--[API.retweets]--><tt class="descclassname">API.</tt><tt class="descname">retweets</tt><big>(</big><em>id</em><span class="optional">[</span>, <em>count</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.retweets" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">retweets</tt><big>(</big><em>id</em><span class="optional">[</span>, <em>count</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.retweets" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns up to 100 of the first retweets of the given tweet.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -378,7 +370,7 @@ user must be the author of the status to destroy.</p>
 <h2>User methods<a class="headerlink" href="#user-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="API.get_user">
-<!--[API.get_user]--><tt class="descclassname">API.</tt><tt class="descname">get_user</tt><big>(</big><em>id/user_id/screen_name</em><big>)</big><a class="headerlink" href="#API.get_user" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">get_user</tt><big>(</big><em>id/user_id/screen_name</em><big>)</big><a class="headerlink" href="#API.get_user" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns information about the specified user.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -386,8 +378,8 @@ user must be the author of the status to destroy.</p>
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
-<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
-<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specifies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+<li><em>screen_name</em> &#8211; Specifies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
 </ul>
 </td>
 </tr>
@@ -400,7 +392,7 @@ user must be the author of the status to destroy.</p>
 
 <dl class="method">
 <dt id="API.me">
-<!--[API.me]--><tt class="descclassname">API.</tt><tt class="descname">me</tt><big>(</big><big>)</big><a class="headerlink" href="#API.me" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">me</tt><big>(</big><big>)</big><a class="headerlink" href="#API.me" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the authenticated user&#8217;s information.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -414,7 +406,7 @@ user must be the author of the status to destroy.</p>
 
 <dl class="method">
 <dt id="API.followers">
-<!--[API.followers]--><tt class="descclassname">API.</tt><tt class="descname">followers</tt><big>(</big><span class="optional">[</span><em>id/screen_name/user_id</em><span class="optional">]</span><span class="optional">[</span>, <em>cursor</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.followers" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">followers</tt><big>(</big><span class="optional">[</span><em>id/screen_name/user_id</em><span class="optional">]</span><span class="optional">[</span>, <em>cursor</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.followers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns an user&#8217;s followers ordered in which they were added 100 at a
 time. If no user is specified by id/screen name, it defaults to the
 authenticated user.</p>
@@ -424,8 +416,8 @@ authenticated user.</p>
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
-<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
-<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specifies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+<li><em>screen_name</em> &#8211; Specifies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
 <li><em>cursor</em> &#8211; Breaks the results into pages. Provide a value of  -1 to begin paging. Provide values as returned to in the response body&#8217;s next_cursor and previous_cursor attributes to page back and forth in the list.</li>
 </ul>
 </td>
@@ -439,7 +431,7 @@ authenticated user.</p>
 
 <dl class="method">
 <dt id="API.search_users">
-<!--[API.search_users]--><tt class="descclassname">API.</tt><tt class="descname">search_users</tt><big>(</big><em>q</em><span class="optional">[</span>, <em>per_page</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.search_users" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">search_users</tt><big>(</big><em>q</em><span class="optional">[</span>, <em>per_page</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.search_users" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run a search for users similar to Find People button on Twitter.com;
 the same results returned by people search on Twitter.com will be
 returned by using this API (about being listed in the People
@@ -468,7 +460,7 @@ this API.</p>
 <h2>Direct Message Methods<a class="headerlink" href="#direct-message-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="API.direct_messages">
-<!--[API.direct_messages]--><tt class="descclassname">API.</tt><tt class="descname">direct_messages</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.direct_messages" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">direct_messages</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.direct_messages" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns direct messages sent to the authenticating user.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -491,7 +483,7 @@ this API.</p>
 
 <dl class="method">
 <dt id="API.sent_direct_messages">
-<!--[API.sent_direct_messages]--><tt class="descclassname">API.</tt><tt class="descname">sent_direct_messages</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.sent_direct_messages" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">sent_direct_messages</tt><big>(</big><span class="optional">[</span><em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.sent_direct_messages" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns direct messages sent by the authenticating user.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -514,7 +506,7 @@ this API.</p>
 
 <dl class="method">
 <dt id="API.send_direct_message">
-<!--[API.send_direct_message]--><tt class="descclassname">API.</tt><tt class="descname">send_direct_message</tt><big>(</big><em>user/screen_name/user_id</em>, <em>text</em><big>)</big><a class="headerlink" href="#API.send_direct_message" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">send_direct_message</tt><big>(</big><em>user/screen_name/user_id</em>, <em>text</em><big>)</big><a class="headerlink" href="#API.send_direct_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends a new direct message to the specified user from the
 authenticating user.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -537,20 +529,16 @@ authenticating user.</p>
 
 <dl class="method">
 <dt id="API.destroy_direct_message">
-<!--[API.destroy_direct_message]--><tt class="descclassname">API.</tt><tt class="descname">destroy_direct_message</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.destroy_direct_message" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">destroy_direct_message</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.destroy_direct_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Destroy a direct message. Authenticating user must be the recipient of
 the direct message.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>id</em> &#8211; The ID of the direct message to destroy.</li>
-</ul>
-</td>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>id</em> &#8211; The ID of the direct message to destroy.</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">DirectMessage</span></tt> object</p>
-</td>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">DirectMessage</span></tt> object</td>
 </tr>
 </tbody>
 </table>
@@ -561,7 +549,7 @@ the direct message.</p>
 <h2>Friendship Methods<a class="headerlink" href="#friendship-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="API.create_friendship">
-<!--[API.create_friendship]--><tt class="descclassname">API.</tt><tt class="descname">create_friendship</tt><big>(</big><em>id/screen_name/user_id</em><span class="optional">[</span>, <em>follow</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.create_friendship" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">create_friendship</tt><big>(</big><em>id/screen_name/user_id</em><span class="optional">[</span>, <em>follow</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.create_friendship" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new friendship with the specified user (aka follow).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -569,8 +557,8 @@ the direct message.</p>
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
-<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
-<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+<li><em>screen_name</em> &#8211; Specifies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specifies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
 <li><em>follow</em> &#8211; Enable notifications for the target user in addition to becoming friends.</li>
 </ul>
 </td>
@@ -584,7 +572,7 @@ the direct message.</p>
 
 <dl class="method">
 <dt id="API.destroy_friendship">
-<!--[API.destroy_friendship]--><tt class="descclassname">API.</tt><tt class="descname">destroy_friendship</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.destroy_friendship" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">destroy_friendship</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.destroy_friendship" title="Permalink to this definition">¶</a></dt>
 <dd><p>Destroy a friendship with the specified user (aka unfollow).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -592,8 +580,8 @@ the direct message.</p>
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
-<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
-<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+<li><em>screen_name</em> &#8211; Specifies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specifies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
 </ul>
 </td>
 </tr>
@@ -606,7 +594,7 @@ the direct message.</p>
 
 <dl class="method">
 <dt id="API.exists_friendship">
-<!--[API.exists_friendship]--><tt class="descclassname">API.</tt><tt class="descname">exists_friendship</tt><big>(</big><em>user_a</em>, <em>user_b</em><big>)</big><a class="headerlink" href="#API.exists_friendship" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">exists_friendship</tt><big>(</big><em>user_a</em>, <em>user_b</em><big>)</big><a class="headerlink" href="#API.exists_friendship" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if a friendship exists between two users. Will return True if
 user_a follows user_b, otherwise False.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -628,7 +616,7 @@ user_a follows user_b, otherwise False.</p>
 
 <dl class="method">
 <dt id="API.show_friendship">
-<!--[API.show_friendship]--><tt class="descclassname">API.</tt><tt class="descname">show_friendship</tt><big>(</big><em>source_id/source_screen_name</em>, <em>target_id/target_screen_name</em><big>)</big><a class="headerlink" href="#API.show_friendship" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">show_friendship</tt><big>(</big><em>source_id/source_screen_name</em>, <em>target_id/target_screen_name</em><big>)</big><a class="headerlink" href="#API.show_friendship" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns detailed information about the relationship between two users.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -651,7 +639,7 @@ user_a follows user_b, otherwise False.</p>
 
 <dl class="method">
 <dt id="API.friends_ids">
-<!--[API.friends_ids]--><tt class="descclassname">API.</tt><tt class="descname">friends_ids</tt><big>(</big><em>id/screen_name/user_id</em><span class="optional">[</span>, <em>cursor</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.friends_ids" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">friends_ids</tt><big>(</big><em>id/screen_name/user_id</em><span class="optional">[</span>, <em>cursor</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.friends_ids" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns an array containing the IDs of users being followed by the
 specified user.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -660,8 +648,8 @@ specified user.</p>
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
-<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
-<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+<li><em>screen_name</em> &#8211; Specifies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specifies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
 <li><em>cursor</em> &#8211; Breaks the results into pages. Provide a value of  -1 to begin paging. Provide values as returned to in the response body&#8217;s next_cursor and previous_cursor attributes to page back and forth in the list.</li>
 </ul>
 </td>
@@ -675,7 +663,7 @@ specified user.</p>
 
 <dl class="method">
 <dt id="API.followers_ids">
-<!--[API.followers_ids]--><tt class="descclassname">API.</tt><tt class="descname">followers_ids</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.followers_ids" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">followers_ids</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.followers_ids" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns an array containing the IDs of users following the specified
 user.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -684,8 +672,8 @@ user.</p>
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
-<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
-<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+<li><em>screen_name</em> &#8211; Specifies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specifies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
 <li><em>cursor</em> &#8211; Breaks the results into pages. Provide a value of  -1 to begin paging. Provide values as returned to in the response body&#8217;s next_cursor and previous_cursor attributes to page back and forth in the list.</li>
 </ul>
 </td>
@@ -702,7 +690,7 @@ user.</p>
 <h2>Account Methods<a class="headerlink" href="#account-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="API.verify_credentials">
-<!--[API.verify_credentials]--><tt class="descclassname">API.</tt><tt class="descname">verify_credentials</tt><big>(</big><big>)</big><a class="headerlink" href="#API.verify_credentials" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">verify_credentials</tt><big>(</big><big>)</big><a class="headerlink" href="#API.verify_credentials" title="Permalink to this definition">¶</a></dt>
 <dd><p>Verify the supplied user credentials are valid.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -716,7 +704,7 @@ user.</p>
 
 <dl class="method">
 <dt id="API.rate_limit_status">
-<!--[API.rate_limit_status]--><tt class="descclassname">API.</tt><tt class="descname">rate_limit_status</tt><big>(</big><big>)</big><a class="headerlink" href="#API.rate_limit_status" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">rate_limit_status</tt><big>(</big><big>)</big><a class="headerlink" href="#API.rate_limit_status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the remaining number of API requests available to the
 requesting user before the API limit is reached for the current
 hour. Calls to rate_limit_status do not count against the rate
@@ -735,20 +723,16 @@ limit status for the requester&#8217;s IP address is returned.</p>
 
 <dl class="method">
 <dt id="API.set_delivery_device">
-<!--[API.set_delivery_device]--><tt class="descclassname">API.</tt><tt class="descname">set_delivery_device</tt><big>(</big><em>device</em><big>)</big><a class="headerlink" href="#API.set_delivery_device" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">set_delivery_device</tt><big>(</big><em>device</em><big>)</big><a class="headerlink" href="#API.set_delivery_device" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets which device Twitter delivers updates to for the authenticating
 user. Sending &#8220;none&#8221; as the device parameter will disable SMS updates.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>device</em> &#8211; Must be one of: sms, none</li>
-</ul>
-</td>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>device</em> &#8211; Must be one of: sms, none</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
-</td>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</td>
 </tr>
 </tbody>
 </table>
@@ -756,7 +740,7 @@ user. Sending &#8220;none&#8221; as the device parameter will disable SMS update
 
 <dl class="method">
 <dt id="API.update_profile_colors">
-<!--[API.update_profile_colors]--><tt class="descclassname">API.</tt><tt class="descname">update_profile_colors</tt><big>(</big><span class="optional">[</span><em>profile_background_color</em><span class="optional">]</span><span class="optional">[</span>, <em>profile_text_color</em><span class="optional">]</span><span class="optional">[</span>, <em>profile_link_color</em><span class="optional">]</span><span class="optional">[</span>, <em>profile_sidebar_fill_color</em><span class="optional">]</span><span class="optional">[</span>, <em>profile_sidebar_border_color</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.update_profile_colors" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">update_profile_colors</tt><big>(</big><span class="optional">[</span><em>profile_background_color</em><span class="optional">]</span><span class="optional">[</span>, <em>profile_text_color</em><span class="optional">]</span><span class="optional">[</span>, <em>profile_link_color</em><span class="optional">]</span><span class="optional">[</span>, <em>profile_sidebar_fill_color</em><span class="optional">]</span><span class="optional">[</span>, <em>profile_sidebar_border_color</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.update_profile_colors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets one or more hex values that control the color scheme of the
 authenticating user&#8217;s profile page on twitter.com.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -781,20 +765,16 @@ authenticating user&#8217;s profile page on twitter.com.</p>
 
 <dl class="method">
 <dt id="API.update_profile_image">
-<!--[API.update_profile_image]--><tt class="descclassname">API.</tt><tt class="descname">update_profile_image</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#API.update_profile_image" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">update_profile_image</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#API.update_profile_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update the authenticating user&#8217;s profile image. Valid formats: GIF,
 JPG, or PNG</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>filename</em> &#8211; local path to image file to upload. Not a remote URL!</li>
-</ul>
-</td>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>filename</em> &#8211; local path to image file to upload. Not a remote URL!</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
-</td>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</td>
 </tr>
 </tbody>
 </table>
@@ -802,20 +782,16 @@ JPG, or PNG</p>
 
 <dl class="method">
 <dt id="API.update_profile_background_image">
-<!--[API.update_profile_background_image]--><tt class="descclassname">API.</tt><tt class="descname">update_profile_background_image</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#API.update_profile_background_image" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">update_profile_background_image</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#API.update_profile_background_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update authenticating user&#8217;s background image. Valid formats: GIF,
 JPG, or PNG</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>filename</em> &#8211; local path to image file to upload. Not a remote URL!</li>
-</ul>
-</td>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>filename</em> &#8211; local path to image file to upload. Not a remote URL!</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</p>
-</td>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">User</span></tt> object</td>
 </tr>
 </tbody>
 </table>
@@ -823,7 +799,7 @@ JPG, or PNG</p>
 
 <dl class="method">
 <dt id="API.update_profile">
-<!--[API.update_profile]--><tt class="descclassname">API.</tt><tt class="descname">update_profile</tt><big>(</big><span class="optional">[</span><em>name</em><span class="optional">]</span><span class="optional">[</span>, <em>url</em><span class="optional">]</span><span class="optional">[</span>, <em>location</em><span class="optional">]</span><span class="optional">[</span>, <em>description</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.update_profile" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">update_profile</tt><big>(</big><span class="optional">[</span><em>name</em><span class="optional">]</span><span class="optional">[</span>, <em>url</em><span class="optional">]</span><span class="optional">[</span>, <em>location</em><span class="optional">]</span><span class="optional">[</span>, <em>description</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.update_profile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets values that users are able to set under the &#8220;Account&#8221; tab of
 their settings page.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -850,7 +826,7 @@ their settings page.</p>
 <h2>Favorite Methods<a class="headerlink" href="#favorite-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="API.favorites">
-<!--[API.favorites]--><tt class="descclassname">API.</tt><tt class="descname">favorites</tt><big>(</big><span class="optional">[</span><em>id</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.favorites" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">favorites</tt><big>(</big><span class="optional">[</span><em>id</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.favorites" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the favorite statuses for the authenticating user or user
 specified by the ID parameter.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -872,20 +848,16 @@ specified by the ID parameter.</p>
 
 <dl class="method">
 <dt id="API.create_favorite">
-<!--[API.create_favorite]--><tt class="descclassname">API.</tt><tt class="descname">create_favorite</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.create_favorite" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">create_favorite</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.create_favorite" title="Permalink to this definition">¶</a></dt>
 <dd><p>Favorites the status specified in the ID parameter as the
 authenticating user.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>id</em> &#8211; The numerical ID of the status.</li>
-</ul>
-</td>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>id</em> &#8211; The numerical ID of the status.</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">Status</span></tt> object</p>
-</td>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">Status</span></tt> object</td>
 </tr>
 </tbody>
 </table>
@@ -893,20 +865,16 @@ authenticating user.</p>
 
 <dl class="method">
 <dt id="API.destroy_favorite">
-<!--[API.destroy_favorite]--><tt class="descclassname">API.</tt><tt class="descname">destroy_favorite</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.destroy_favorite" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">destroy_favorite</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.destroy_favorite" title="Permalink to this definition">¶</a></dt>
 <dd><p>Un-favorites the status specified in the ID parameter as the
 authenticating user.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>id</em> &#8211; The numerical ID of the status.</li>
-</ul>
-</td>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>id</em> &#8211; The numerical ID of the status.</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">Status</span></tt> object</p>
-</td>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">Status</span></tt> object</td>
 </tr>
 </tbody>
 </table>
@@ -917,7 +885,7 @@ authenticating user.</p>
 <h2>Notification Methods<a class="headerlink" href="#notification-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="API.enable_notifications">
-<!--[API.enable_notifications]--><tt class="descclassname">API.</tt><tt class="descname">enable_notifications</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.enable_notifications" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">enable_notifications</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.enable_notifications" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enables device notifications for updates from the specified user.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -925,8 +893,8 @@ authenticating user.</p>
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
-<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
-<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+<li><em>screen_name</em> &#8211; Specifies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specifies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
 </ul>
 </td>
 </tr>
@@ -939,7 +907,7 @@ authenticating user.</p>
 
 <dl class="method">
 <dt id="API.disable_notifications">
-<!--[API.disable_notifications]--><tt class="descclassname">API.</tt><tt class="descname">disable_notifications</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.disable_notifications" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">disable_notifications</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.disable_notifications" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disables notifications for updates from the specified user to the
 authenticating user.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -948,8 +916,8 @@ authenticating user.</p>
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
-<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
-<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+<li><em>screen_name</em> &#8211; Specifies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specifies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
 </ul>
 </td>
 </tr>
@@ -965,7 +933,7 @@ authenticating user.</p>
 <h2>Block Methods<a class="headerlink" href="#block-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="API.create_block">
-<!--[API.create_block]--><tt class="descclassname">API.</tt><tt class="descname">create_block</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.create_block" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">create_block</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.create_block" title="Permalink to this definition">¶</a></dt>
 <dd><p>Blocks the user specified in the ID parameter as the authenticating
 user. Destroys a friendship to the blocked user if it exists.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -974,8 +942,8 @@ user. Destroys a friendship to the blocked user if it exists.</p>
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
-<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
-<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+<li><em>screen_name</em> &#8211; Specifies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specifies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
 </ul>
 </td>
 </tr>
@@ -988,7 +956,7 @@ user. Destroys a friendship to the blocked user if it exists.</p>
 
 <dl class="method">
 <dt id="API.destroy_block">
-<!--[API.destroy_block]--><tt class="descclassname">API.</tt><tt class="descname">destroy_block</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.destroy_block" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">destroy_block</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.destroy_block" title="Permalink to this definition">¶</a></dt>
 <dd><p>Un-blocks the user specified in the ID parameter for the
 authenticating user.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -997,8 +965,8 @@ authenticating user.</p>
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
-<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
-<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+<li><em>screen_name</em> &#8211; Specifies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specifies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
 </ul>
 </td>
 </tr>
@@ -1011,7 +979,7 @@ authenticating user.</p>
 
 <dl class="method">
 <dt id="API.exists_block">
-<!--[API.exists_block]--><tt class="descclassname">API.</tt><tt class="descname">exists_block</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.exists_block" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">exists_block</tt><big>(</big><em>id/screen_name/user_id</em><big>)</big><a class="headerlink" href="#API.exists_block" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if the authenticated user is blocking the specified user.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1019,8 +987,8 @@ authenticating user.</p>
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
-<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
-<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+<li><em>screen_name</em> &#8211; Specifies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specifies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
 </ul>
 </td>
 </tr>
@@ -1033,20 +1001,16 @@ authenticating user.</p>
 
 <dl class="method">
 <dt id="API.blocks">
-<!--[API.blocks]--><tt class="descclassname">API.</tt><tt class="descname">blocks</tt><big>(</big><span class="optional">[</span><em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.blocks" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">blocks</tt><big>(</big><span class="optional">[</span><em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.blocks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns an array of user objects that the authenticating user is
 blocking.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>page</em> &#8211; Specifies the page of results to retrieve. Note: there are pagination limits.</li>
-</ul>
-</td>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>page</em> &#8211; Specifies the page of results to retrieve. Note: there are pagination limits.</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">User</span></tt> objects</p>
-</td>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">list of <tt class="xref docutils literal"><span class="pre">User</span></tt> objects</td>
 </tr>
 </tbody>
 </table>
@@ -1054,7 +1018,7 @@ blocking.</p>
 
 <dl class="method">
 <dt id="API.blocks_ids">
-<!--[API.blocks_ids]--><tt class="descclassname">API.</tt><tt class="descname">blocks_ids</tt><big>(</big><big>)</big><a class="headerlink" href="#API.blocks_ids" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">blocks_ids</tt><big>(</big><big>)</big><a class="headerlink" href="#API.blocks_ids" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns an array of numeric user ids the authenticating user is
 blocking.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1072,7 +1036,7 @@ blocking.</p>
 <h2>Spam Reporting Methods<a class="headerlink" href="#spam-reporting-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="API.report_spam">
-<!--[API.report_spam]--><tt class="descclassname">API.</tt><tt class="descname">report_spam</tt><big>(</big><span class="optional">[</span><em>id/user_id/screen_name</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.report_spam" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">report_spam</tt><big>(</big><span class="optional">[</span><em>id/user_id/screen_name</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.report_spam" title="Permalink to this definition">¶</a></dt>
 <dd><p>The user specified in the id is blocked by the authenticated user and
 reported as a spammer.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1081,8 +1045,8 @@ reported as a spammer.</p>
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>id</em> &#8211; Specifies the ID or screen name of the user.</li>
-<li><em>screen_name</em> &#8211; Specfies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
-<li><em>user_id</em> &#8211; Specfies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
+<li><em>screen_name</em> &#8211; Specifies the screen name of the user. Helpful for disambiguating when a valid screen name is also a user ID.</li>
+<li><em>user_id</em> &#8211; Specifies the ID of the user. Helpful for disambiguating when a valid user ID is also a valid screen name.</li>
 </ul>
 </td>
 </tr>
@@ -1098,7 +1062,7 @@ reported as a spammer.</p>
 <h2>Saved Searches Methods<a class="headerlink" href="#saved-searches-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="API.saved_searches">
-<!--[API.saved_searches]--><tt class="descclassname">API.</tt><tt class="descname">saved_searches</tt><big>(</big><big>)</big><a class="headerlink" href="#API.saved_searches" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">saved_searches</tt><big>(</big><big>)</big><a class="headerlink" href="#API.saved_searches" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the authenticated user&#8217;s saved search queries.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1112,20 +1076,16 @@ reported as a spammer.</p>
 
 <dl class="method">
 <dt id="API.get_saved_search">
-<!--[API.get_saved_search]--><tt class="descclassname">API.</tt><tt class="descname">get_saved_search</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.get_saved_search" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">get_saved_search</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.get_saved_search" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve the data for a saved search owned by the authenticating user
 specified by the given id.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>id</em> &#8211; The id of the saved search to be retrieved.</li>
-</ul>
-</td>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>id</em> &#8211; The id of the saved search to be retrieved.</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">SavedSearch</span></tt> object</p>
-</td>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">SavedSearch</span></tt> object</td>
 </tr>
 </tbody>
 </table>
@@ -1133,19 +1093,15 @@ specified by the given id.</p>
 
 <dl class="method">
 <dt id="API.create_saved_search">
-<!--[API.create_saved_search]--><tt class="descclassname">API.</tt><tt class="descname">create_saved_search</tt><big>(</big><em>query</em><big>)</big><a class="headerlink" href="#API.create_saved_search" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">create_saved_search</tt><big>(</big><em>query</em><big>)</big><a class="headerlink" href="#API.create_saved_search" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a saved search for the authenticated user.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>query</em> &#8211; The query of the search the user would like to save.</li>
-</ul>
-</td>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>query</em> &#8211; The query of the search the user would like to save.</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">SavedSearch</span></tt> object</p>
-</td>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">SavedSearch</span></tt> object</td>
 </tr>
 </tbody>
 </table>
@@ -1153,20 +1109,16 @@ specified by the given id.</p>
 
 <dl class="method">
 <dt id="API.destroy_saved_search">
-<!--[API.destroy_saved_search]--><tt class="descclassname">API.</tt><tt class="descname">destroy_saved_search</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.destroy_saved_search" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">destroy_saved_search</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.destroy_saved_search" title="Permalink to this definition">¶</a></dt>
 <dd><p>Destroys a saved search for the authenticated user. The search
 specified by id must be owned by the authenticating user.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>id</em> &#8211; The id of the saved search to be deleted.</li>
-</ul>
-</td>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>id</em> &#8211; The id of the saved search to be deleted.</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">SavedSearch</span></tt> object</p>
-</td>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">SavedSearch</span></tt> object</td>
 </tr>
 </tbody>
 </table>
@@ -1177,7 +1129,7 @@ specified by id must be owned by the authenticating user.</p>
 <h2>Help Methods<a class="headerlink" href="#help-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="API.test">
-<!--[API.test]--><tt class="descclassname">API.</tt><tt class="descname">test</tt><big>(</big><big>)</big><a class="headerlink" href="#API.test" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">test</tt><big>(</big><big>)</big><a class="headerlink" href="#API.test" title="Permalink to this definition">¶</a></dt>
 <dd><p>Invokes the test method in the Twitter API. Return True if successful,
 otherwise False.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1192,7 +1144,7 @@ otherwise False.</p>
 
 <dl class="method">
 <dt id="API.search">
-<!--[API.search]--><tt class="descclassname">API.</tt><tt class="descname">search</tt><big>(</big><em>q</em><span class="optional">[</span>, <em>lang</em><span class="optional">]</span><span class="optional">[</span>, <em>locale</em><span class="optional">]</span><span class="optional">[</span>, <em>rpp</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><span class="optional">[</span>, <em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>geocode</em><span class="optional">]</span><span class="optional">[</span>, <em>show_user</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.search" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">search</tt><big>(</big><em>q</em><span class="optional">[</span>, <em>lang</em><span class="optional">]</span><span class="optional">[</span>, <em>locale</em><span class="optional">]</span><span class="optional">[</span>, <em>rpp</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><span class="optional">[</span>, <em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>geocode</em><span class="optional">]</span><span class="optional">[</span>, <em>show_user</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.search" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns tweets that match a specified query.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1218,7 +1170,7 @@ otherwise False.</p>
 
 <dl class="method">
 <dt id="API.trends">
-<!--[API.trends]--><tt class="descclassname">API.</tt><tt class="descname">trends</tt><big>(</big><big>)</big><a class="headerlink" href="#API.trends" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">trends</tt><big>(</big><big>)</big><a class="headerlink" href="#API.trends" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the top ten topics that are currently trending on Twitter. The
 response includes the time of the request, the name of each trend, and
 the url to the Twitter Search results page for that topic.</p>
@@ -1234,7 +1186,7 @@ the url to the Twitter Search results page for that topic.</p>
 
 <dl class="method">
 <dt id="API.trends_current">
-<!--[API.trends_current]--><tt class="descclassname">API.</tt><tt class="descname">trends_current</tt><big>(</big><span class="optional">[</span><em>exclude</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.trends_current" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">trends_current</tt><big>(</big><span class="optional">[</span><em>exclude</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.trends_current" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the current top 10 trending topics on Twitter. The response
 includes the time of the request, the name of each trending topic, and
 query used on Twitter Search results page for that topic.</p>
@@ -1242,13 +1194,9 @@ query used on Twitter Search results page for that topic.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>exclude</em> &#8211; Setting this equal to hashtags will remove all hashtags from the trends list.</li>
-</ul>
-</td>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>exclude</em> &#8211; Setting this equal to hashtags will remove all hashtags from the trends list.</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">JSON</span></tt> object</p>
-</td>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">JSON</span></tt> object</td>
 </tr>
 </tbody>
 </table>
@@ -1256,7 +1204,7 @@ query used on Twitter Search results page for that topic.</p>
 
 <dl class="method">
 <dt id="API.trends_daily">
-<!--[API.trends_daily]--><tt class="descclassname">API.</tt><tt class="descname">trends_daily</tt><big>(</big><span class="optional">[</span><em>date</em><span class="optional">]</span><span class="optional">[</span>, <em>exclude</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.trends_daily" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">trends_daily</tt><big>(</big><span class="optional">[</span><em>date</em><span class="optional">]</span><span class="optional">[</span>, <em>exclude</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.trends_daily" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the top 20 trending topics for each hour in a given day.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1277,7 +1225,7 @@ query used on Twitter Search results page for that topic.</p>
 
 <dl class="method">
 <dt id="API.trends_weekly">
-<!--[API.trends_weekly]--><tt class="descclassname">API.</tt><tt class="descname">trends_weekly</tt><big>(</big><span class="optional">[</span><em>date</em><span class="optional">]</span><span class="optional">[</span>, <em>exclude</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.trends_weekly" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">trends_weekly</tt><big>(</big><span class="optional">[</span><em>date</em><span class="optional">]</span><span class="optional">[</span>, <em>exclude</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.trends_weekly" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the top 30 trending topics for each day in a given week.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1301,7 +1249,7 @@ query used on Twitter Search results page for that topic.</p>
 <h2>List Methods<a class="headerlink" href="#list-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="API.create_list">
-<!--[API.create_list]--><tt class="descclassname">API.</tt><tt class="descname">create_list</tt><big>(</big><em>name</em><span class="optional">[</span>, <em>mode</em><span class="optional">]</span><span class="optional">[</span>, <em>description</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.create_list" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">create_list</tt><big>(</big><em>name</em><span class="optional">[</span>, <em>mode</em><span class="optional">]</span><span class="optional">[</span>, <em>description</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.create_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a new list for the authenticated user. Accounts are limited to
 20 lists.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1324,19 +1272,15 @@ query used on Twitter Search results page for that topic.</p>
 
 <dl class="method">
 <dt id="API.destroy_list">
-<!--[API.destroy_list]--><tt class="descclassname">API.</tt><tt class="descname">destroy_list</tt><big>(</big><em>slug</em><big>)</big><a class="headerlink" href="#API.destroy_list" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">destroy_list</tt><big>(</big><em>slug</em><big>)</big><a class="headerlink" href="#API.destroy_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Deletes the specified list. Must be owned by the authenticated user.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>slug</em> &#8211; the slug name or numerical ID of the list</li>
-</ul>
-</td>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>slug</em> &#8211; the slug name or numerical ID of the list</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">List</span></tt> object</p>
-</td>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">List</span></tt> object</td>
 </tr>
 </tbody>
 </table>
@@ -1344,7 +1288,7 @@ query used on Twitter Search results page for that topic.</p>
 
 <dl class="method">
 <dt id="API.update_list">
-<!--[API.update_list]--><tt class="descclassname">API.</tt><tt class="descname">update_list</tt><big>(</big><em>slug</em><span class="optional">[</span>, <em>name</em><span class="optional">]</span><span class="optional">[</span>, <em>mode</em><span class="optional">]</span><span class="optional">[</span>, <em>description</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.update_list" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">update_list</tt><big>(</big><em>slug</em><span class="optional">[</span>, <em>name</em><span class="optional">]</span><span class="optional">[</span>, <em>mode</em><span class="optional">]</span><span class="optional">[</span>, <em>description</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.update_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates the specified list. Note: this current throws a 500. Twitter
 is looking into the issue.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1368,7 +1312,7 @@ is looking into the issue.</p>
 
 <dl class="method">
 <dt id="API.lists">
-<!--[API.lists]--><tt class="descclassname">API.</tt><tt class="descname">lists</tt><big>(</big><span class="optional">[</span><em>cursor</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.lists" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">lists</tt><big>(</big><span class="optional">[</span><em>cursor</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.lists" title="Permalink to this definition">¶</a></dt>
 <dd><p>List the lists of the specified user. Private lists will be included
 if the authenticated users is the same as the user who&#8217;s lists are
 being returned.</p>
@@ -1376,13 +1320,9 @@ being returned.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>cursor</em> &#8211; Breaks the results into pages. Provide a value of  -1 to begin paging. Provide values as returned to in the response body&#8217;s next_cursor and previous_cursor attributes to page back and forth in the list.</li>
-</ul>
-</td>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>cursor</em> &#8211; Breaks the results into pages. Provide a value of  -1 to begin paging. Provide values as returned to in the response body&#8217;s next_cursor and previous_cursor attributes to page back and forth in the list.</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">List</span></tt> objects</p>
-</td>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">list of <tt class="xref docutils literal"><span class="pre">List</span></tt> objects</td>
 </tr>
 </tbody>
 </table>
@@ -1390,19 +1330,15 @@ being returned.</p>
 
 <dl class="method">
 <dt id="API.lists_memberships">
-<!--[API.lists_memberships]--><tt class="descclassname">API.</tt><tt class="descname">lists_memberships</tt><big>(</big><span class="optional">[</span><em>cursor</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.lists_memberships" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">lists_memberships</tt><big>(</big><span class="optional">[</span><em>cursor</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.lists_memberships" title="Permalink to this definition">¶</a></dt>
 <dd><p>List the lists the specified user has been added to.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>cursor</em> &#8211; Breaks the results into pages. Provide a value of  -1 to begin paging. Provide values as returned to in the response body&#8217;s next_cursor and previous_cursor attributes to page back and forth in the list.</li>
-</ul>
-</td>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>cursor</em> &#8211; Breaks the results into pages. Provide a value of  -1 to begin paging. Provide values as returned to in the response body&#8217;s next_cursor and previous_cursor attributes to page back and forth in the list.</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">List</span></tt> objects</p>
-</td>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">list of <tt class="xref docutils literal"><span class="pre">List</span></tt> objects</td>
 </tr>
 </tbody>
 </table>
@@ -1410,19 +1346,15 @@ being returned.</p>
 
 <dl class="method">
 <dt id="API.lists_subscriptions">
-<!--[API.lists_subscriptions]--><tt class="descclassname">API.</tt><tt class="descname">lists_subscriptions</tt><big>(</big><span class="optional">[</span><em>cursor</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.lists_subscriptions" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">lists_subscriptions</tt><big>(</big><span class="optional">[</span><em>cursor</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.lists_subscriptions" title="Permalink to this definition">¶</a></dt>
 <dd><p>List the lists the specified user follows.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>cursor</em> &#8211; Breaks the results into pages. Provide a value of  -1 to begin paging. Provide values as returned to in the response body&#8217;s next_cursor and previous_cursor attributes to page back and forth in the list.</li>
-</ul>
-</td>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>cursor</em> &#8211; Breaks the results into pages. Provide a value of  -1 to begin paging. Provide values as returned to in the response body&#8217;s next_cursor and previous_cursor attributes to page back and forth in the list.</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <tt class="xref docutils literal"><span class="pre">List</span></tt> objects</p>
-</td>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">list of <tt class="xref docutils literal"><span class="pre">List</span></tt> objects</td>
 </tr>
 </tbody>
 </table>
@@ -1430,7 +1362,7 @@ being returned.</p>
 
 <dl class="method">
 <dt id="API.list_timeline">
-<!--[API.list_timeline]--><tt class="descclassname">API.</tt><tt class="descname">list_timeline</tt><big>(</big><em>owner</em>, <em>slug</em><span class="optional">[</span>, <em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>count</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.list_timeline" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">list_timeline</tt><big>(</big><em>owner</em>, <em>slug</em><span class="optional">[</span>, <em>since_id</em><span class="optional">]</span><span class="optional">[</span>, <em>max_id</em><span class="optional">]</span><span class="optional">[</span>, <em>per_page</em><span class="optional">]</span><span class="optional">[</span>, <em>page</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.list_timeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Show tweet timeline for members of the specified list.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1441,7 +1373,7 @@ being returned.</p>
 <li><em>slug</em> &#8211; the slug name or numerical ID of the list</li>
 <li><em>since_id</em> &#8211; Returns only statuses with an ID greater than (that is, more recent than) the specified ID.</li>
 <li><em>max_id</em> &#8211; Returns only statuses with an ID less than (that is, older than) or equal to the specified ID.</li>
-<li><em>count</em> &#8211; Specifies the number of statuses to retrieve.</li>
+<li><em>per_page</em> &#8211; Number of results per a page</li>
 <li><em>page</em> &#8211; Specifies the page of results to retrieve. Note: there are pagination limits.</li>
 </ul>
 </td>
@@ -1455,7 +1387,7 @@ being returned.</p>
 
 <dl class="method">
 <dt id="API.get_list">
-<!--[API.get_list]--><tt class="descclassname">API.</tt><tt class="descname">get_list</tt><big>(</big><em>owner</em>, <em>slug</em><big>)</big><a class="headerlink" href="#API.get_list" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">get_list</tt><big>(</big><em>owner</em>, <em>slug</em><big>)</big><a class="headerlink" href="#API.get_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Show the specified list. Private lists will only be shown if the
 authenticated user owns the specified list.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1477,7 +1409,7 @@ authenticated user owns the specified list.</p>
 
 <dl class="method">
 <dt id="API.add_list_member">
-<!--[API.add_list_member]--><tt class="descclassname">API.</tt><tt class="descname">add_list_member</tt><big>(</big><em>slug</em>, <em>id</em><big>)</big><a class="headerlink" href="#API.add_list_member" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">add_list_member</tt><big>(</big><em>slug</em>, <em>id</em><big>)</big><a class="headerlink" href="#API.add_list_member" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a member to a list. The authenticated user must own the list to be
 able to add members to it. Lists are limited to having 500 members.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1499,7 +1431,7 @@ able to add members to it. Lists are limited to having 500 members.</p>
 
 <dl class="method">
 <dt id="API.remove_list_member">
-<!--[API.remove_list_member]--><tt class="descclassname">API.</tt><tt class="descname">remove_list_member</tt><big>(</big><em>slug</em>, <em>id</em><big>)</big><a class="headerlink" href="#API.remove_list_member" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">remove_list_member</tt><big>(</big><em>slug</em>, <em>id</em><big>)</big><a class="headerlink" href="#API.remove_list_member" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes the specified member from the list. The authenticated user
 must be the list&#8217;s owner to remove members from the list.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1521,7 +1453,7 @@ must be the list&#8217;s owner to remove members from the list.</p>
 
 <dl class="method">
 <dt id="API.list_members">
-<!--[API.list_members]--><tt class="descclassname">API.</tt><tt class="descname">list_members</tt><big>(</big><em>owner</em>, <em>slug</em>, <em>cursor</em><big>)</big><a class="headerlink" href="#API.list_members" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">list_members</tt><big>(</big><em>owner</em>, <em>slug</em>, <em>cursor</em><big>)</big><a class="headerlink" href="#API.list_members" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the members of the specified list.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1543,7 +1475,7 @@ must be the list&#8217;s owner to remove members from the list.</p>
 
 <dl class="method">
 <dt id="API.is_list_member">
-<!--[API.is_list_member]--><tt class="descclassname">API.</tt><tt class="descname">is_list_member</tt><big>(</big><em>owner</em>, <em>slug</em>, <em>id</em><big>)</big><a class="headerlink" href="#API.is_list_member" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">is_list_member</tt><big>(</big><em>owner</em>, <em>slug</em>, <em>id</em><big>)</big><a class="headerlink" href="#API.is_list_member" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if a user is a member of the specified list.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1565,7 +1497,7 @@ must be the list&#8217;s owner to remove members from the list.</p>
 
 <dl class="method">
 <dt id="API.subscribe_list">
-<!--[API.subscribe_list]--><tt class="descclassname">API.</tt><tt class="descname">subscribe_list</tt><big>(</big><em>owner</em>, <em>slug</em><big>)</big><a class="headerlink" href="#API.subscribe_list" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">subscribe_list</tt><big>(</big><em>owner</em>, <em>slug</em><big>)</big><a class="headerlink" href="#API.subscribe_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make the authenticated user follow the specified list.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1586,7 +1518,7 @@ must be the list&#8217;s owner to remove members from the list.</p>
 
 <dl class="method">
 <dt id="API.unsubscribe_list">
-<!--[API.unsubscribe_list]--><tt class="descclassname">API.</tt><tt class="descname">unsubscribe_list</tt><big>(</big><em>owner</em>, <em>slug</em><big>)</big><a class="headerlink" href="#API.unsubscribe_list" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">unsubscribe_list</tt><big>(</big><em>owner</em>, <em>slug</em><big>)</big><a class="headerlink" href="#API.unsubscribe_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unsubscribes the authenticated user form the specified list.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1607,7 +1539,7 @@ must be the list&#8217;s owner to remove members from the list.</p>
 
 <dl class="method">
 <dt id="API.list_subscribers">
-<!--[API.list_subscribers]--><tt class="descclassname">API.</tt><tt class="descname">list_subscribers</tt><big>(</big><em>owner</em>, <em>slug</em><span class="optional">[</span>, <em>cursor</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.list_subscribers" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">list_subscribers</tt><big>(</big><em>owner</em>, <em>slug</em><span class="optional">[</span>, <em>cursor</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.list_subscribers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the subscribers of the specified list.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1629,7 +1561,7 @@ must be the list&#8217;s owner to remove members from the list.</p>
 
 <dl class="method">
 <dt id="API.is_subscribed_list">
-<!--[API.is_subscribed_list]--><tt class="descclassname">API.</tt><tt class="descname">is_subscribed_list</tt><big>(</big><em>owner</em>, <em>slug</em>, <em>id</em><big>)</big><a class="headerlink" href="#API.is_subscribed_list" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">is_subscribed_list</tt><big>(</big><em>owner</em>, <em>slug</em>, <em>id</em><big>)</big><a class="headerlink" href="#API.is_subscribed_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if the specified user is a subscriber of the specified list.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1654,7 +1586,7 @@ must be the list&#8217;s owner to remove members from the list.</p>
 <h2>Local Trends Methods<a class="headerlink" href="#local-trends-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="API.trends_available">
-<!--[API.trends_available]--><tt class="descclassname">API.</tt><tt class="descname">trends_available</tt><big>(</big><span class="optional">[</span><em>lat</em><span class="optional">]</span><span class="optional">[</span>, <em>long</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.trends_available" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">trends_available</tt><big>(</big><span class="optional">[</span><em>lat</em><span class="optional">]</span><span class="optional">[</span>, <em>long</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.trends_available" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the locations that Twitter has trending topic information for. The response is an array of &#8220;locations&#8221; that encode the location&#8217;s WOEID (a Yahoo! Where On Earth ID) and some other human-readable information such as a canonical name and country the location belongs in. [Coming soon]</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1675,22 +1607,88 @@ must be the list&#8217;s owner to remove members from the list.</p>
 
 <dl class="method">
 <dt id="API.trends_location">
-<!--[API.trends_location]--><tt class="descclassname">API.</tt><tt class="descname">trends_location</tt><big>(</big><em>woeid</em><big>)</big><a class="headerlink" href="#API.trends_location" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">API.</tt><tt class="descname">trends_location</tt><big>(</big><em>woeid</em><big>)</big><a class="headerlink" href="#API.trends_location" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the top 10 trending topics for a specific location Twitter has trending topic information for. The response is an array of &#8220;trend&#8221; objects that encode the name of the trending topic, the query parameter that can be used to search for the topic on Search, and the direct URL that can be issued against Search. This information is cached for five minutes, and therefore users are discouraged from querying these endpoints faster than once every five minutes.  Global trends information is also available from this API by using a WOEID of 1.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>woeid</em> &#8211; <ul>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>woeid</em> &#8211; <ul class="simple">
 <li>The WOEID of the location to be querying for.</li>
-</ul>
-</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="xref docutils literal"><span class="pre">JSON</span></tt> object</p>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">JSON</span></tt> object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="geo-methods">
+<h2>Geo Methods<a class="headerlink" href="#geo-methods" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="API.reverse_geocode">
+<tt class="descclassname">API.</tt><tt class="descname">reverse_geocode</tt><big>(</big><span class="optional">[</span><em>lat</em><span class="optional">]</span><span class="optional">[</span>, <em>long</em><span class="optional">]</span><span class="optional">[</span>, <em>accuracy</em><span class="optional">]</span><span class="optional">[</span>, <em>granularity</em><span class="optional">]</span><span class="optional">[</span>, <em>max_results</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#API.reverse_geocode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a latitude and longitude, looks for places (cities and
+neighbourhoods) whose IDs can be specified in a call to
+<a title="API.update_status" class="reference internal" href="#API.update_status"><tt class="xref docutils literal"><span class="pre">update_status()</span></tt></a> to appear as the name of the location. This
+call provides a detailed response about the location in question;
+the <tt class="xref docutils literal"><span class="pre">nearby_places()</span></tt> function should be preferred for getting
+a list of places nearby without great detail.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>lat</em> &#8211; The location&#8217;s latitude.</li>
+<li><em>long</em> &#8211; The location&#8217;s longitude.</li>
+<li><em>accuracy</em> &#8211; Specify the &#8220;region&#8221; in which to search, such as a number (then this is a radius in meters, but it can also take a string that is suffixed with ft to specify feet).  If this is not passed in, then it is assumed to be 0m</li>
+<li><em>granularity</em> &#8211; Assumed to be <a href="#id2"><span class="problematic" id="id3">`</span></a>neighborhood&#8217; by default; can also be <a href="#id4"><span class="problematic" id="id5">`</span></a>city&#8217;.</li>
+<li><em>max_results</em> &#8211; A hint as to the maximum number of results to return. This is only a guideline, which may not be adhered to.</li>
+</ul>
 </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<tt class="descclassname">API.</tt><tt class="descname">reverse_geocode</tt><big>(</big><span class="optional">[</span><em>lat</em><span class="optional">]</span><span class="optional">[</span>, <em>long</em><span class="optional">]</span><span class="optional">[</span>, <em>ip</em><span class="optional">]</span><span class="optional">[</span>, <em>accuracy</em><span class="optional">]</span><span class="optional">[</span>, <em>granularity</em><span class="optional">]</span><span class="optional">[</span>, <em>max_results</em><span class="optional">]</span><big>)</big></dt>
+<dd><p>Given a latitude and longitude, looks for nearby places (cities and
+neighbourhoods) whose IDs can be specified in a call to
+<a title="API.update_status" class="reference internal" href="#API.update_status"><tt class="xref docutils literal"><span class="pre">update_status()</span></tt></a> to appear as the name of the location. This
+call provides a detailed response about the location in question;
+the <tt class="xref docutils literal"><span class="pre">nearby_places()</span></tt> function should be preferred for getting
+a list of places nearby without great detail.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>lat</em> &#8211; The location&#8217;s latitude.</li>
+<li><em>long</em> &#8211; The location&#8217;s longitude.</li>
+<li><em>ip</em> &#8211; The location&#8217;s IP address. Twitter will attempt to geolocate using the IP address.</li>
+<li><em>accuracy</em> &#8211; Specify the &#8220;region&#8221; in which to search, such as a number (then this is a radius in meters, but it can also take a string that is suffixed with ft to specify feet).  If this is not passed in, then it is assumed to be 0m</li>
+<li><em>granularity</em> &#8211; Assumed to be <a href="#id6"><span class="problematic" id="id7">`</span></a>neighborhood&#8217; by default; can also be <a href="#id8"><span class="problematic" id="id9">`</span></a>city&#8217;.</li>
+<li><em>max_results</em> &#8211; A hint as to the maximum number of results to return. This is only a guideline, which may not be adhered to.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="API.geo_id">
+<tt class="descclassname">API.</tt><tt class="descname">geo_id</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#API.geo_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given <em>id</em> of a place, provide more details about that place.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>id</em> &#8211; Valid Twitter ID of a location.</td>
 </tr>
 </tbody>
 </table>
@@ -1707,7 +1705,7 @@ must be the list&#8217;s owner to remove members from the list.</p>
         <div class="sphinxsidebarwrapper">
             <h3><a href="index.html">Table Of Contents</a></h3>
             <ul>
-<li><a class="reference external" href="">API Reference</a></li>
+<li><a class="reference external" href="#">API Reference</a></li>
 <li><a class="reference external" href="#tweepy-api-twitter-api-wrapper"><tt class="docutils literal"><span class="pre">tweepy.api</span></tt> &#8212; Twitter API wrapper</a><ul>
 <li><a class="reference external" href="#timeline-methods">Timeline methods</a></li>
 <li><a class="reference external" href="#status-methods">Status methods</a></li>
@@ -1723,22 +1721,32 @@ must be the list&#8217;s owner to remove members from the list.</p>
 <li><a class="reference external" href="#help-methods">Help Methods</a></li>
 <li><a class="reference external" href="#list-methods">List Methods</a></li>
 <li><a class="reference external" href="#local-trends-methods">Local Trends Methods</a></li>
+<li><a class="reference external" href="#geo-methods">Geo Methods</a></li>
 </ul>
 </li>
 </ul>
 
             <h4>Previous topic</h4>
-            <p class="topless"><a href="cursor_tutorial.html" title="previous chapter">Cursor Tutorial</a></p>
+            <p class="topless"><a href="cursor_tutorial.html"
+                                  title="previous chapter">Cursor Tutorial</a></p>
             <h3>This Page</h3>
             <ul class="this-page-menu">
-              <li><a href="sources/api.txt">Show Source</a></li>
+              <li><a href="_sources/api.txt"
+                     rel="nofollow">Show Source</a></li>
             </ul>
-          <h3>Quick search</h3>
-            <form class="search" action="search.html" method="get">
-              <input type="text" name="q" size="18" /> <input type="submit" value="Go" />
-              <input type="hidden" name="check_keywords" value="yes" />
-              <input type="hidden" name="area" value="default" />
-            </form>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -1748,16 +1756,16 @@ must be the list&#8217;s owner to remove members from the list.</p>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
+             >index</a></li>
         <li class="right" >
           <a href="cursor_tutorial.html" title="Cursor Tutorial"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">tweepy v1.4 documentation</a> &raquo;</li> 
+             >previous</a> |</li>
+        <li><a href="index.html">tweepy v1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
       &copy; Copyright 2009, Joshua Roesslein.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.5.2.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.5.
     </div>
   </body>
 </html>
