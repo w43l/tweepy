@@ -96,3 +96,7 @@ def list_to_csv(item_list):
     if item_list:
         return ','.join([str(i) for i in item_list])
 
+def yes_or_no(msg):
+    answer = raw_input('%s (Y/n) ' % msg).strip()
+    return answer == 'Y'
+

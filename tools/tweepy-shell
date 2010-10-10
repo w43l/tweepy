@@ -1,0 +1,119 @@
+#!/usr/bin/env python
+
+from optparse import OptionParser
+from os import path, makedirs
+from sys import exit
+
+from tweepy.utils import import_simplejson, yes_or_no
+json = import_simplejson()
+
+from tweepy.auth import OAuthHandler
+from tweepy.api import API
+
+def launch_shell(ctx):
+    local_ns = {'api': API(ctx.auth)}
+    banner = '<Tweepy shell>'
+
+    try:
+        import IPython
+        ipshell = IPython.Shell.IPShell([''], user_ns=local_ns)
+        ipshell.mainloop(sys_exit=1, banner=banner)
+    except ImportError:
+        import code
+        code.interact(banner, local=local_ns)
+
+commands = {
+    'shell': launch_shell
+}
+
+def parse_options():
+    parser = OptionParser("usage: %prog COMMAND [options]")
+    parser.add_option("--auth",
+        dest = "auth_file",
+        default= "~/.tweepy/credentials/default",
+        help = "path to file storing authentication credentials")
+
+    options, args = parser.parse_args()
+    if (len(args) < 1):
+        parser.error("Missing COMMAND")
+
+    try:
+        command = commands[args[0]]
+    except KeyError, e:
+        parser.error("Invalid command: %s" % e.args[0])
+
+    return command, options
+
+def request_authorization(file):
+    print 'No authorization credentials found!'
+    if yes_or_no('Would you like to authorize an account?') is False:
+        exit(1)
+
+    # User must provide us the consumer credentials
+    consumer_key = raw_input('Consumer key: ')
+    consumer_secret = raw_input('Consumer secret: ')
+
+    auth = OAuthHandler(consumer_key, consumer_secret, secure=True)
+
+    # Fetch a request token and provide user the URL to visit
+    # in order to authorize us access.
+    auth_url = auth.get_authorization_url()
+    print 'Visit this URL to authorize access to your Twitter account: %s' % auth_url
+
+    # After user has authorized access, they must then provide us the PIN
+    # that Twitter displayed to them. We can then fetch the access token.
+    auth_pin = raw_input('Authorization PIN: ')
+    access_token = auth.get_access_token(auth_pin)
+
+    # Ask user if they wish to store these credentials for later use.
+    if yes_or_no('Save credentials to %s for later use?' % file):
+        credentials = {
+            'consumer': {
+                'key': consumer_key,
+                'secret': consumer_secret },
+            'access_token': {
+                'key': access_token.key,
+                'secret': access_token.secret }
+            }
+
+        try:
+            if path.exists(file) is False:
+                makedirs(path.dirname(file))
+            json.dump(credentials, open(file, 'w'))
+        except Exception, e:
+            print 'Error while saving credentials: %s' % e
+            exit(1)
+
+    return auth
+
+def load_authentication(file):
+    # If the credentials file is not found, ask
+    # the user to authorize the application.
+    if path.exists(file) is False:
+        return request_authorization(file)
+
+    try:
+        credentials = json.load(open(file))
+    except Exception, e:
+        print 'Error while loading credentials: %s' % e
+        exit(1)
+
+    auth = OAuthHandler(credentials['consumer']['key'], credentials['consumer']['secret'])
+    auth.set_access_token(credentials['access_token']['key'], credentials['access_token']['secret'])
+
+    return auth
+
+class Context(object):
+
+    def __init__(self, auth, options):
+        self.auth = auth
+        self.options = options
+
+def main():
+    command, options = parse_options()
+    auth = load_authentication(path.expanduser(options.auth_file))
+
+    command(Context(auth, options))
+
+if __name__ == '__main__':
+    main()
