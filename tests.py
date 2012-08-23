@@ -3,14 +3,17 @@ import random
 from time import sleep
 import os
 
-from tweepy import *
+from tweepy import (API, BasicAuthHandler, OAuthHandler, Friendship, Cursor,
+                    MemoryCache, FileCache)
 
 """Configurations"""
 # Must supply twitter account credentials for tests
 username = ''
 password = ''
-consumer_key = ''
-consumer_secret = ''
+oauth_consumer_key = ''
+oauth_consumer_secret = ''
+oauth_token=''
+oauth_token_secret=''
 
 """Unit tests"""
 
@@ -18,12 +21,11 @@ consumer_secret = ''
 class TweepyAPITests(unittest.TestCase):
 
     def setUp(self):
-        self.api = API(BasicAuthHandler(username, password))
+        auth = OAuthHandler(oauth_consumer_key, oauth_consumer_secret)
+        auth.set_access_token(oauth_token, oauth_token_secret)
+        self.api = API(auth)
         self.api.retry_count = 2
         self.api.retry_delay = 5
-
-    def testpublictimeline(self):
-        self.api.public_timeline()
 
     def testhometimeline(self):
         self.api.home_timeline()
@@ -41,6 +43,9 @@ class TweepyAPITests(unittest.TestCase):
     def testretweetedbyme(self):
         self.api.retweeted_by_me()
 
+    def testretweetedbyuser(self):
+        self.api.retweeted_by_user('twitter')
+
     def testretweetedtome(self):
         self.api.retweeted_to_me()
 
@@ -55,7 +60,7 @@ class TweepyAPITests(unittest.TestCase):
         self.api.retweets(123)
 
     def testgetstatus(self):
-        s = self.api.get_status(id=123)
+        self.api.get_status(id=123)
 
     def testupdateanddestroystatus(self):
         # test update
@@ -129,6 +134,14 @@ class TweepyAPITests(unittest.TestCase):
 
     def testverifycredentials(self):
         self.assertNotEqual(self.api.verify_credentials(), False)
+
+        # make sure that `me.status.entities` is not an empty dict
+        me = self.api.verify_credentials(include_entities=True)
+        self.assertTrue(me.status.entities)
+
+        # `status` shouldn't be included
+        me = self.api.verify_credentials(skip_status=True)
+        self.assertFalse(hasattr(me, 'status'))
 
         api = API(BasicAuthHandler('bad', 'password'))
         self.assertEqual(api.verify_credentials(), False)
@@ -276,7 +289,9 @@ class TweepyAPITests(unittest.TestCase):
 class TweepyCursorTests(unittest.TestCase):
 
     def setUp(self):
-        self.api = API(BasicAuthHandler(username, password))
+        auth = OAuthHandler(oauth_consumer_key, oauth_consumer_secret)
+        auth.set_access_token(oauth_token, oauth_token_secret)
+        self.api = API(auth)
         self.api.retry_count = 2
         self.api.retry_delay = 5
 
@@ -311,7 +326,7 @@ class TweepyCursorTests(unittest.TestCase):
 class TweepyAuthTests(unittest.TestCase):
 
     def testoauth(self):
-        auth = OAuthHandler(self.consumer_key, self.consumer_secret)
+        auth = OAuthHandler(oauth_consumer_key, oauth_consumer_secret)
 
         # test getting access token
         auth_url = auth.get_authorization_url()
@@ -379,6 +394,4 @@ class TweepyCacheTests(unittest.TestCase):
         os.rmdir('cache_test_dir')
 
 if __name__ == '__main__':
-
     unittest.main()
-

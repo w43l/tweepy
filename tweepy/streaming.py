@@ -6,13 +6,12 @@ import httplib
 from socket import timeout
 from threading import Thread
 from time import sleep
-import urllib
 
 from tweepy.models import Status
 from tweepy.api import API
 from tweepy.error import TweepError
 
-from tweepy.utils import import_simplejson
+from tweepy.utils import import_simplejson, urlencode_noplus
 json = import_simplejson()
 
 STREAM_VERSION = 1
@@ -76,7 +75,7 @@ class Stream(object):
         self.retry_time = options.get("retry_time", 10.0)
         self.snooze_time = options.get("snooze_time",  5.0)
         self.buffer_size = options.get("buffer_size",  1500)
-        if options.get("secure"):
+        if options.get("secure", True):
             self.scheme = "https"
         else:
             self.scheme = "http"
@@ -135,23 +134,35 @@ class Stream(object):
         if exception:
             raise
 
-    def _read_loop(self, resp):
-          while self.running:
-            if resp.isclosed():
-                break
-
-            # read length
-            data = ''
-            while True:
-                c = resp.read(1)
-                if c == '\n':
-                    break
-                data += c
-            data = data.strip()
-
-            # read data and pass into listener
-            if self.listener.on_data(data) is False:
+    def _data(self, data):
+        for d in [dt for dt in data.split('\n') if dt]:
+            if self.listener.on_data(d) is False:
                 self.running = False
+
+    def _read_loop(self, resp):
+
+        while self.running and not resp.isclosed():
+
+            # Note: keep-alive newlines might be inserted before each length value.
+            # read until we get a digit...
+            c = '\n'
+            while c == '\n' and self.running and not resp.isclosed():
+                c = resp.read(1)
+            delimited_string = c
+
+            # read rest of delimiter length..
+            d = ''
+            while d != '\n' and self.running and not resp.isclosed():
+                d = resp.read(1)
+                delimited_string += d
+
+            # read the next twitter status object
+            if delimited_string.strip().isdigit():
+                next_status_obj = resp.read( int(delimited_string) )
+                self._data(next_status_obj)
+
+        if resp.isclosed():
+            self.on_closed(resp)
 
     def _start(self, async):
         self.running = True
@@ -160,13 +171,16 @@ class Stream(object):
         else:
             self._run()
 
+    def on_closed(self, resp):
+        """ Called when the response has been closed by Twitter """
+        pass
+
     def userstream(self, count=None, async=False, secure=True):
+        self.parameters = {'delimited': 'length'}
         if self.running:
             raise TweepError('Stream object already connected!')
-        self.url = '/2/user.json'
+        self.url = '/2/user.json?delimited=length'
         self.host='userstream.twitter.com'
-        if count:
-            self.url += '&count=%s' % count
         self._start(async)
 
     def firehose(self, count=None, async=False):
@@ -207,9 +221,9 @@ class Stream(object):
         if locations and len(locations) > 0:
             assert len(locations) % 4 == 0
             self.parameters['locations'] = ','.join(['%.2f' % l for l in locations])
-	if count:
-		self.parameters['count'] = count
-        self.body = urllib.urlencode(self.parameters)
+        if count:
+            self.parameters['count'] = count
+        self.body = urlencode_noplus(self.parameters)
         self.parameters['delimited'] = 'length'
         self._start(async)
 
